@@ -28,7 +28,7 @@ def reset_config():
     user_config.update(default_config)
     try:
         assert user_config == default_config
-    except:
+    except AssertionError:
         print(
             (
                 DataFrame(
@@ -116,7 +116,7 @@ def solve_problem(
         try:
             instance = power_system.solve()
         except OptimizationError:
-            scheduled, committed = power_system.debug_infeasibe(times)
+            scheduled, committed = power_system.debug_infeasible(times)
             power_system.write_model("infeasible.lp")
             raise OptimizationError("failed to solve, even with load shedding.")
 

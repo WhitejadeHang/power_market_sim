@@ -337,7 +337,8 @@ class OptimizationProblem(OptimizationObject):
     def write_model(self, filename):
         try:
             self._model.write(filename, symbolic_solver_labels=True)
-        except:
+        except Exception as e:
+            logging.warning(f"Failed to write model to {filename} with symbolic labels: {e}")
             self._model.pprint(filename)
 
     def _remove_component(self, name, time=None):

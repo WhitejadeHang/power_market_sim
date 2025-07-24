@@ -12,7 +12,8 @@ from simpower.tests.test_integration import (
 logging.basicConfig(level=logging.ERROR)
 
 
-raise nose.SkipTest("TODO: stochastic UC currently not working with new pyomo version")
+# Stochastic UC tests - re-enabled to test with updated pyomo version
+# If tests fail, they will be marked as failed rather than skipped
 
 mipgap = 0.0001
 

@@ -26,10 +26,11 @@ setup(
         "simpower.tests": ["*.csv", "*/*.csv", "*/*/*.csv"],
     },
     install_requires=[
-        "pandas>=1.3",
-        "pyomo>=6.0",
-        "matplotlib>=3.4",
-        "xarray>=0.18",
+        "pandas>=1.3,<3.0",
+        "pyomo>=6.0,<7.0",
+        "matplotlib>=3.4,<4.0",
+        "xarray>=0.18,<3.0",
+        "numpy>=1.20,<2.0",
     ],
     tests_require=["nose", "coverage", "objgraph"],
     # it helps to have seed if you are going to make releases

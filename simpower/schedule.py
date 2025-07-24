@@ -45,17 +45,17 @@ class TimeIndex(object):
                 # 尝试转换为日期时间索引
                 try:
                     self.times = pd.DatetimeIndex(index)
-                except:
+                except (ValueError, TypeError) as e:
                     # 如果无法转换，创建一个默认的日期时间索引
-                    logging.warning("无法将索引转换为日期时间索引，使用默认日期")
+                    logging.warning(f"无法将索引转换为日期时间索引，使用默认日期: {e}")
                     start_date = dt.now().replace(hour=0, minute=0, second=0, microsecond=0)
                     self.times = pd.date_range(start=start_date, periods=len(index), freq="H")
         else:
             # 如果不是索引对象，尝试转换
             try:
                 self.times = pd.DatetimeIndex(index)
-            except:
-                logging.warning("无法将输入转换为日期时间索引，使用默认日期")
+            except (ValueError, TypeError) as e:
+                logging.warning(f"无法将输入转换为日期时间索引，使用默认日期: {e}")
                 start_date = dt.now().replace(hour=0, minute=0, second=0, microsecond=0)
                 self.times = pd.date_range(start=start_date, periods=len(index), freq="H")
         

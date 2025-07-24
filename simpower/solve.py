@@ -106,7 +106,7 @@ def standaloneUC():
 
         store = store_state(power_system, times, sln)
         store.close()
-    except:
+    except Exception:
         if user_config.debugger or args.debugger:
             __, __, tb = sys.exc_info()
             traceback.print_exc()
@@ -315,7 +315,7 @@ def main():
         # solve the problem with those arguments
         try:
             solve_problem(directory)
-        except:
+        except Exception:
             if args["debugger"]:
                 __, __, tb = sys.exc_info()
                 traceback.print_exc()
