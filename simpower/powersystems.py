@@ -319,7 +319,12 @@ class PowerSystem(OptimizationProblem):
         busNameL = []
         busNameL.extend(getattrL(generators, "bus"))
         busNameL.extend(getattrL(loads, "bus"))
-        busNameL = pd.Series(pd.unique(busNameL)).dropna().tolist()
+        # 修复pandas兼容性警告
+        unique_buses = pd.unique(busNameL)
+        if len(unique_buses) > 0:
+            busNameL = pd.Series(unique_buses).dropna().tolist()
+        else:
+            busNameL = []
 
         if len(busNameL) == 0:
             busNameL = [None]

@@ -137,7 +137,7 @@ class TimeIndex(object):
         if i == -1 and not circular:
             return self.initialTime
         else:
-            return self.strings[i]
+            return self.strings.iloc[i]
 
     def last(self):
         return self.__getitem__(-1, circular=True)
