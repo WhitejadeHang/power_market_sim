@@ -100,97 +100,79 @@ class IEEE50BusResultsAnalyzer:
         }
         
         try:
-            # 提取发电机结果
-            if hasattr(self.solution, 'generators'):
-                gen_results = self.solution.generators
+            # 从simpower solution提取发电机结果
+            if hasattr(self.solution, 'generators_power') and hasattr(self.solution, 'generators_status'):
+                power_df = self.solution.generators_power
+                status_df = self.solution.generators_status
+                ic_df = getattr(self.solution, 'incremental_cost', None)
                 
-                for gen_name, gen_data in gen_results.items():
-                    gen_info = {
-                        'name': gen_name,
-                        'power': 0,
-                        'status': 0,
-                        'marginal_cost': 0,
-                        'startup_cost': 0,
-                        'fuel_cost': 0
-                    }
+                # 获取第一行数据（假设是单时段）
+                if len(power_df) > 0:
+                    power_row = power_df.iloc[0]
+                    status_row = status_df.iloc[0]
+                    ic_row = ic_df.iloc[0] if ic_df is not None else None
                     
-                    # 功率输出
-                    if hasattr(gen_data, 'power') and hasattr(gen_data.power, 'value'):
-                        gen_info['power'] = float(gen_data.power.value or 0)
-                    
-                    # 运行状态
-                    if hasattr(gen_data, 'status') and hasattr(gen_data.status, 'value'):
-                        gen_info['status'] = int(gen_data.status.value or 0)
-                    
-                    # 边际成本
-                    if hasattr(gen_data, 'marginal_cost') and hasattr(gen_data.marginal_cost, 'value'):
-                        gen_info['marginal_cost'] = float(gen_data.marginal_cost.value or 0)
-                    
-                    # 启动成本
-                    if hasattr(gen_data, 'startup_cost') and hasattr(gen_data.startup_cost, 'value'):
-                        gen_info['startup_cost'] = float(gen_data.startup_cost.value or 0)
-                    
-                    # 燃料成本
-                    if hasattr(gen_data, 'fuel_cost') and hasattr(gen_data.fuel_cost, 'value'):
-                        gen_info['fuel_cost'] = float(gen_data.fuel_cost.value or 0)
-                    
-                    results['generators'][gen_name] = gen_info
+                    for i, gen_col in enumerate(power_df.columns):
+                        # 获取发电机名称
+                        if i < len(self.generators_df):
+                            gen_name = self.generators_df.iloc[i]['name']
+                        else:
+                            gen_name = f'Gen_{i}'
+                            
+                        gen_info = {
+                            'name': gen_name,
+                            'power': float(power_row[gen_col]),
+                            'status': int(status_row[gen_col]),
+                            'marginal_cost': float(ic_row[gen_col] if ic_row is not None else 0),
+                            'startup_cost': 0,  # 需要从其他地方获取
+                            'fuel_cost': 0     # 需要计算
+                        }
+                        
+                        # 计算燃料成本（简化计算）
+                        if gen_info['power'] > 0:
+                            gen_info['fuel_cost'] = gen_info['power'] * gen_info['marginal_cost']
+                        
+                        results['generators'][gen_name] = gen_info
             
-            # 提取节点结果
-            if hasattr(self.solution, 'buses'):
-                bus_results = self.solution.buses
+            # 从simpower solution提取节点结果
+            if hasattr(self.solution, 'lmps'):
+                lmp_data = self.solution.lmps
                 
-                for bus_name, bus_data in bus_results.items():
-                    bus_info = {
-                        'name': bus_name,
-                        'lmp': 0,
-                        'angle': 0,
-                        'load': 0,
-                        'generation': 0
-                    }
-                    
-                    # 节点电价LMP
-                    if hasattr(bus_data, 'lmp') and hasattr(bus_data.lmp, 'value'):
-                        bus_info['lmp'] = float(bus_data.lmp.value or 0)
-                    
-                    # 电压角度
-                    if hasattr(bus_data, 'angle') and hasattr(bus_data.angle, 'value'):
-                        bus_info['angle'] = float(bus_data.angle.value or 0)
-                    
-                    # 负荷
-                    if hasattr(bus_data, 'load') and hasattr(bus_data.load, 'value'):
-                        bus_info['load'] = float(bus_data.load.value or 0)
-                    
-                    # 发电量
-                    if hasattr(bus_data, 'generation') and hasattr(bus_data.generation, 'value'):
-                        bus_info['generation'] = float(bus_data.generation.value or 0)
-                    
-                    results['buses'][bus_name] = bus_info
-            
-            # 提取线路结果
-            if hasattr(self.solution, 'lines'):
-                line_results = self.solution.lines
-                
-                for line_name, line_data in line_results.items():
-                    line_info = {
-                        'name': line_name,
-                        'flow': 0,
-                        'loading': 0
-                    }
-                    
-                    # 潮流
-                    if hasattr(line_data, 'flow') and hasattr(line_data.flow, 'value'):
-                        line_info['flow'] = float(line_data.flow.value or 0)
-                    
-                    # 负载率
-                    if hasattr(line_data, 'loading') and hasattr(line_data.loading, 'value'):
-                        line_info['loading'] = float(line_data.loading.value or 0)
-                    
-                    results['lines'][line_name] = line_info
+                # 处理LMP数据
+                if isinstance(lmp_data, dict):
+                    for time_key, lmp_values in lmp_data.items():
+                        if isinstance(lmp_values, list):
+                            for i, lmp in enumerate(lmp_values):
+                                if i < len(self.buses_df):
+                                    bus_name = self.buses_df.iloc[i]['name']
+                                    bus_info = {
+                                        'name': bus_name,
+                                        'lmp': float(lmp),
+                                        'angle': 0,  # 需要从其他地方获取
+                                        'load': 0,   # 需要从其他地方获取
+                                        'generation': 0  # 需要计算
+                                    }
+                                    
+                                    # 获取负荷数据
+                                    if i < len(self.loads_df):
+                                        bus_info['load'] = float(self.loads_df.iloc[i]['power'])
+                                    
+                                    # 计算该节点的发电量
+                                    bus_generation = 0
+                                    for gen_name, gen_info in results['generators'].items():
+                                        # 从发电机数据中找到对应节点的发电机
+                                        gen_row = self.generators_df[self.generators_df['name'] == gen_name]
+                                        if len(gen_row) > 0 and gen_row.iloc[0]['bus'] == bus_name:
+                                            bus_generation += gen_info['power']
+                                    
+                                    bus_info['generation'] = bus_generation
+                                    results['buses'][bus_name] = bus_info
             
             # 提取系统总体结果
-            if hasattr(self.solution, 'objective_value'):
-                results['system']['total_cost'] = float(self.solution.objective_value or 0)
+            if hasattr(self.solution, 'objective'):
+                results['system']['total_cost'] = float(self.solution.objective)
+            elif hasattr(self.solution, 'totalcost_generation'):
+                results['system']['total_cost'] = float(self.solution.totalcost_generation)
             
             # 计算各类成本
             total_fuel_cost = sum(gen['fuel_cost'] for gen in results['generators'].values())
@@ -201,7 +183,7 @@ class IEEE50BusResultsAnalyzer:
                 'total_fuel_cost': total_fuel_cost,
                 'total_startup_cost': total_startup_cost,
                 'total_generation': total_generation,
-                'average_cost': total_fuel_cost / max(total_generation, 1)
+                'average_cost': total_fuel_cost / max(total_generation, 1) if total_generation > 0 else 0
             }
             
             print(f"✅ 成功提取求解结果:")
@@ -215,6 +197,8 @@ class IEEE50BusResultsAnalyzer:
             
         except Exception as e:
             print(f"❌ 提取求解结果失败: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     def create_generation_dispatch_plot(self, results):
