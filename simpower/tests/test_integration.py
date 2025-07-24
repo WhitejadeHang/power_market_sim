@@ -7,8 +7,8 @@ import nose
 from nose.tools import istest
 from pandas.testing import assert_frame_equal, assert_series_equal
 
-from minpower.solve import solve_problem as solve_dir
-from minpower.config import user_config
+from simpower.solve import solve_problem as solve_dir
+from simpower.config import user_config
 from .test_utils import reset_config, with_setup
 
 
@@ -67,7 +67,7 @@ default_config = user_config.copy()
 def run_case(name, basedir=this_directory, **kwds):
     """
     a programatic way to do (nearly) the same thing
-    as calling the minpower script
+    as calling the simpower script
     (nearly: because prepends basedir to the directory name you are solving)
     """
     # reset user_config to defaults first

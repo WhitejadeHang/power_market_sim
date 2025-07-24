@@ -77,7 +77,7 @@ def main():
     )
     parser.add_argument("--output_filename", default="initial.csv")
 
-    # parse all of the standard minpower options
+    # parse all of the standard simpower options
     args = parse_command_line_config(parser)
     initial_dispatch(args["directory"], args["output_filename"])
 

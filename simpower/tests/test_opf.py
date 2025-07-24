@@ -1,8 +1,8 @@
 """Test the constraint behavior of an OPF"""
-from minpower import powersystems
-from minpower.optimization import value
-from minpower.commonscripts import Series
-from minpower.config import user_config
+from simpower import powersystems
+from simpower.optimization import value
+from simpower.commonscripts import Series
+from simpower.config import user_config
 
 from .test_utils import (
     istest,

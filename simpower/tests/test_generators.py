@@ -8,9 +8,9 @@ import pandas as pd
 import numpy as np
 
 from pandas.testing import assert_series_equal
-from minpower.generators import Generator_nonControllable, Generator_Stochastic
-from minpower.optimization import value
-from minpower.schedule import TimeIndex
+from simpower.generators import Generator_nonControllable, Generator_Stochastic
+from simpower.optimization import value
+from simpower.schedule import TimeIndex
 from .test_utils import *
 
 

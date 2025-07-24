@@ -101,7 +101,7 @@ def init_store(power_system, times, data):
 
     storage["version"] = Series(
         {
-            "minpower": pkg_resources.get_distribution("minpower").version,
+            "simpower": pkg_resources.get_distribution("simpower").version,
             # try storing version number of the current working directory
             "problem": _get_problem_version(),
         }

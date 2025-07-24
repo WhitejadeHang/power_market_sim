@@ -1,2 +1,2 @@
-recursive-include minpower/tests *.csv
-recursive-include minpower/configuration *.cfg
+recursive-include simpower/tests *.csv
+recursive-include simpower/configuration *.cfg

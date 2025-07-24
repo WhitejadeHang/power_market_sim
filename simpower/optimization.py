@@ -1,5 +1,5 @@
 """
-An optimization command library for Minpower.
+An optimization command library for Simpower.
 Basically a wrapper around Coopr's `pyomo.ConcreteModel` class.
 """
 import logging

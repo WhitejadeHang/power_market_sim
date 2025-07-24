@@ -1,6 +1,6 @@
 """Test the all of the solver links"""
 
-from minpower import optimization, config
+from simpower import optimization, config
 from .test_utils import *
 from pyomo import environ as pyomo
 

@@ -32,7 +32,7 @@ else:
 
 
 REPO_PATH = '/home/adam/simpower'
-REPO_URL = 'git@github.com:adamgreenhall/simpower.git'
+REPO_URL = 'git@github.com:WhitejadeHang/power_market_sim.git'
 DB_PATH = os.path.join(REPO_PATH,'speed_check/benchmarks.db')
 TMP_DIR = os.path.join(REPO_PATH,'tmp_build')
 

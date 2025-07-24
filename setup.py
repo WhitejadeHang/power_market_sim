@@ -12,7 +12,7 @@ version_number = open("simpower/__init__.py").read().split('"')[1].rstrip('"')
 setup(
     name="simpower",
     version=version_number,
-    download_url="https://github.com/adamgreenhall/simpower"
+    download_url="https://github.com/WhitejadeHang/power_market_sim"
     + "/zipball/v{v}".format(v=version_number),
     entry_points="""
     [console_scripts]
@@ -37,7 +37,7 @@ setup(
     description="power systems optimization made beautiful",
     author="Adam Greenhall",
     author_email="simpower@adamgreenhall.com",
-    url="http://adamgreenhall.github.io/simpower",
+    url="https://github.com/WhitejadeHang/power_market_sim",
     packages=find_packages(),
     keywords=["power systems", "optimization"],
     classifiers=[
@@ -62,8 +62,8 @@ power systems tools made beautiful
 * Many solvers are supported.
 
 
-* `Full documentation and tutorials <http://adamgreenhall.github.io/simpower>`_
-* `Code base <http://github.com/adamgreenhall/simpower>`_
+* `Full documentation and tutorials <https://github.com/WhitejadeHang/power_market_sim>`_
+* `Code base <https://github.com/WhitejadeHang/power_market_sim>`_
 
 """,
 )

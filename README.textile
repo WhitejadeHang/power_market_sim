@@ -9,6 +9,6 @@ h2. 使用 python 的电力系统优化
     - 随机机组组合 (Stochastic Unit Commitment)
 * 可以通过简单的电子表格创建问题
 * 支持多种求解器
-* "完整文档和教程":http://adamgreenhall.github.io/simpower/
+* "完整文档和教程":https://github.com/WhitejadeHang/power_market_sim
 
-构建状态 !https://travis-ci.com/adamgreenhall/simpower.svg?branch=master!:https://travis-ci.com/adamgreenhall/simpower
+构建状态 !https://travis-ci.com/WhitejadeHang/power_market_sim.svg?branch=master!:https://travis-ci.com/WhitejadeHang/power_market_sim
