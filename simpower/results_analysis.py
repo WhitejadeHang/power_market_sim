@@ -26,9 +26,33 @@ try:
 except ImportError:
     HAS_NETWORKX = False
 
-# 设置中文字体
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial Unicode MS']
-plt.rcParams['axes.unicode_minus'] = False
+# 设置中文字体和绘图风格
+try:
+    # 尝试设置中文字体
+    import matplotlib.font_manager as fm
+    # 查找系统中的中文字体
+    chinese_fonts = ['SimHei', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei']
+    available_font = None
+    for font in chinese_fonts:
+        try:
+            plt.rcParams['font.sans-serif'] = [font, 'DejaVu Sans']
+            available_font = font
+            break
+        except:
+            continue
+    
+    if not available_font:
+        # 如果没有中文字体，使用英文
+        plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
+        print("⚠️ 未找到中文字体，将使用英文显示")
+    else:
+        print(f"✅ 使用中文字体: {available_font}")
+        
+    plt.rcParams['axes.unicode_minus'] = False
+except:
+    plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
+    plt.rcParams['axes.unicode_minus'] = False
+    print("⚠️ 字体设置失败，使用默认字体")
 
 # 设置绘图风格
 try:
@@ -119,18 +143,30 @@ class IEEE50BusResultsAnalyzer:
                         else:
                             gen_name = f'Gen_{i}'
                             
+                        # 获取发电机的基础信息
+                        gen_row = self.generators_df.iloc[i] if i < len(self.generators_df) else None
+                        no_load_cost = float(gen_row['no load cost']) if gen_row is not None else 0
+                        
                         gen_info = {
                             'name': gen_name,
                             'power': float(power_row[gen_col]),
                             'status': int(status_row[gen_col]),
                             'marginal_cost': float(ic_row[gen_col] if ic_row is not None else 0),
-                            'startup_cost': 0,  # 需要从其他地方获取
-                            'fuel_cost': 0     # 需要计算
+                            'startup_cost': 0,  # 可以从no_load_cost估算
+                            'fuel_cost': 0,     # 需要计算
+                            'no_load_cost': no_load_cost,
+                            'total_cost': 0
                         }
                         
-                        # 计算燃料成本（简化计算）
-                        if gen_info['power'] > 0:
-                            gen_info['fuel_cost'] = gen_info['power'] * gen_info['marginal_cost']
+                        # 计算燃料成本（包含空载成本）
+                        if gen_info['status'] > 0:  # 机组运行
+                            # 空载成本（固定成本）
+                            gen_info['startup_cost'] = no_load_cost
+                            # 燃料成本（变动成本）= 功率 × 边际成本
+                            if gen_info['power'] > 0:
+                                gen_info['fuel_cost'] = gen_info['power'] * gen_info['marginal_cost']
+                            # 总成本 = 空载成本 + 燃料成本
+                            gen_info['total_cost'] = gen_info['startup_cost'] + gen_info['fuel_cost']
                         
                         results['generators'][gen_name] = gen_info
             
@@ -145,9 +181,20 @@ class IEEE50BusResultsAnalyzer:
                             for i, lmp in enumerate(lmp_values):
                                 if i < len(self.buses_df):
                                     bus_name = self.buses_df.iloc[i]['name']
+                                    
+                                    # 处理异常LMP值（10000表示负荷切除或约束违反）
+                                    lmp_value = float(lmp)
+                                    if lmp_value >= 9999:
+                                        lmp_status = "负荷切除"
+                                        lmp_value = 0  # 用于计算显示为0
+                                    else:
+                                        lmp_status = "正常"
+                                    
                                     bus_info = {
                                         'name': bus_name,
-                                        'lmp': float(lmp),
+                                        'lmp': lmp_value,
+                                        'lmp_raw': float(lmp),  # 保留原始值
+                                        'lmp_status': lmp_status,
                                         'angle': 0,  # 需要从其他地方获取
                                         'load': 0,   # 需要从其他地方获取
                                         'generation': 0  # 需要计算
