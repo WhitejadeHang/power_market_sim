@@ -226,23 +226,23 @@ def generate_block_bidding_curves(generators_df, output_dir):
         else:
             plant_type = 'small_unit'
         
-        # 根据机组类型确定容量段数量和价格特征
+        # 根据机组类型确定容量段数量和价格特征 (4-10段，价格范围0-1500)
         if plant_type == 'supercritical':
-            # 超临界机组：3段，价格梯度较小
-            segments = 3
-            price_multipliers = [0.85, 1.0, 1.25]
+            # 超临界机组：6段，低成本高效率
+            segments = 6
+            base_prices = [15, 25, 35, 50, 70, 100]  # $/MWh
         elif plant_type == 'subcritical':
-            # 亚临界机组：4段，价格梯度中等
-            segments = 4
-            price_multipliers = [0.80, 0.95, 1.15, 1.40]
+            # 亚临界机组：7段，中等成本
+            segments = 7
+            base_prices = [20, 35, 50, 70, 95, 130, 180]  # $/MWh
         elif plant_type == 'old_steam':
-            # 老式机组：4段，价格梯度较大
-            segments = 4
-            price_multipliers = [0.75, 0.90, 1.20, 1.55]
+            # 老式机组：8段，较高成本
+            segments = 8
+            base_prices = [30, 50, 75, 105, 145, 200, 280, 400]  # $/MWh
         else:  # small_unit
-            # 小机组：5段，价格梯度最大
-            segments = 5
-            price_multipliers = [0.70, 0.85, 1.10, 1.35, 1.70]
+            # 小机组：10段，高成本，价格范围最大
+            segments = 10
+            base_prices = [40, 70, 110, 160, 220, 300, 420, 580, 800, 1200]  # $/MWh
         
         # 生成功率点
         power_points = [min_power]
@@ -260,14 +260,17 @@ def generate_block_bidding_curves(generators_df, output_dir):
         bid_data.append({'power': 0, 'price': 0})  # 起始点
         
         for i, power in enumerate(power_points):
-            if i < len(price_multipliers):
-                # 添加随机波动
-                price_variation = np.random.uniform(0.95, 1.05)
-                price = base_cost * price_multipliers[i] * price_variation
+            if i < len(base_prices):
+                # 添加随机波动 ±15%
+                price_variation = np.random.uniform(0.85, 1.15)
+                price = base_prices[i] * price_variation
                 
-                # 确保价格递增
+                # 确保价格递增且在合理范围内
                 if bid_data and price <= bid_data[-1]['price']:
-                    price = bid_data[-1]['price'] + np.random.uniform(1, 5)
+                    price = bid_data[-1]['price'] + np.random.uniform(5, 15)
+                
+                # 限制最高价格在1500$/MWh以内
+                price = min(price, 1500)
                 
                 bid_data.append({
                     'power': power,

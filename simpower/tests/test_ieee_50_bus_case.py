@@ -148,7 +148,7 @@ def run_economic_dispatch_test(case_dir):
         
         if solution is None:
             print("❌ 求解失败：返回空解")
-            return False
+            return False, None
         
         # 分析结果
         print("\n📊 分析求解结果...")
@@ -157,72 +157,58 @@ def run_economic_dispatch_test(case_dir):
         if hasattr(solution, 'solved') and solution.solved:
             print("✅ 找到可行解")
         else:
-            print("⚠️ 解的状态未知或不可行")
+            print("⚠️ 解的状态未知")
         
-        # 分析发电调度
+        # 导入结果分析模块
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+        from simpower.results_analysis import analyze_ieee_50_bus_results
+        
+        # 生成完整的结果分析
+        print("\n📈 生成完整结果分析和可视化...")
+        results_dir = analyze_ieee_50_bus_results(case_dir, solution)
+        
+        print(f"✅ 结果分析完成，保存到: {results_dir}")
+        
+        # 提取关键指标
+        total_generation = 0
+        total_cost = 0
+        dispatched_units = 0
+        lmps = []
+        
+        # 简单的结果提取
         if hasattr(solution, 'generators'):
-            gen_results = solution.generators
-            total_generation = 0
-            dispatched_units = 0
-            
-            print("\n🏭 发电调度结果:")
-            
-            # 按机组类型汇总
-            type_dispatch = {}
-            
-            for gen_name, gen_data in gen_results.items():
+            for gen_name, gen_data in solution.generators.items():
                 if hasattr(gen_data, 'power') and hasattr(gen_data.power, 'value'):
-                    power_output = gen_data.power.value
-                    if power_output > 1:  # 大于1MW认为被调度
-                        total_generation += power_output
+                    power = float(gen_data.power.value or 0)
+                    if power > 1:
                         dispatched_units += 1
-                        
-                        # 从名称提取机组类型
-                        if 'supercritical' in gen_name:
-                            plant_type = 'supercritical'
-                        elif 'subcritical' in gen_name:
-                            plant_type = 'subcritical'
-                        elif 'old_steam' in gen_name:
-                            plant_type = 'old_steam'
-                        else:
-                            plant_type = 'small_unit'
-                        
-                        if plant_type not in type_dispatch:
-                            type_dispatch[plant_type] = {'units': 0, 'power': 0}
-                        
-                        type_dispatch[plant_type]['units'] += 1
-                        type_dispatch[plant_type]['power'] += power_output
-            
-            print(f"   调度机组数: {dispatched_units}")
-            print(f"   总发电量: {total_generation:.1f} MW")
-            
-            for plant_type, data in type_dispatch.items():
-                avg_cf = data['power'] / data['units'] if data['units'] > 0 else 0
-                print(f"   {plant_type}: {data['units']}台, {data['power']:.1f}MW, {avg_cf:.1f}MW平均")
+                        total_generation += power
         
-        # 分析LMP
         if hasattr(solution, 'buses'):
-            bus_results = solution.buses
-            lmps = []
-            
-            for bus_name, bus_data in bus_results.items():
+            for bus_name, bus_data in solution.buses.items():
                 if hasattr(bus_data, 'lmp') and hasattr(bus_data.lmp, 'value'):
-                    lmp = bus_data.lmp.value
-                    if lmp is not None and lmp > 0:
+                    lmp = float(bus_data.lmp.value or 0)
+                    if lmp > 0:
                         lmps.append(lmp)
-            
-            if lmps:
-                print(f"\n💰 节点电价(LMP)分析:")
-                print(f"   价格范围: {min(lmps):.2f} - {max(lmps):.2f} $/MWh")
-                print(f"   平均价格: {sum(lmps)/len(lmps):.2f} $/MWh")
-                print(f"   价差: {max(lmps) - min(lmps):.2f} $/MWh")
         
-        return True
+        if hasattr(solution, 'objective_value'):
+            total_cost = float(solution.objective_value or 0)
+        
+        print(f"\n📊 关键指标摘要:")
+        print(f"   调度机组数: {dispatched_units}")
+        print(f"   总发电量: {total_generation:.1f} MW")
+        print(f"   系统总成本: ${total_cost:,.0f}")
+        
+        if lmps:
+            print(f"   节点电价范围: ${min(lmps):.2f} - ${max(lmps):.2f} $/MWh")
+            print(f"   平均节点电价: ${sum(lmps)/len(lmps):.2f} $/MWh")
+        
+        return True, solution
         
     except Exception as e:
         print(f"❌ 求解过程出错: {str(e)}")
         print(f"💻 用时: {time.time() - start_time:.2f} 秒")
-        return False
+        return False, None
 
 
 def run_performance_benchmark(case_dir):
@@ -359,9 +345,11 @@ def main():
     
     # 3. 运行经济调度测试
     if test_results['structure']:
-        test_results['dispatch'] = run_economic_dispatch_test(case_dir)
+        dispatch_success, solution = run_economic_dispatch_test(case_dir)
+        test_results['dispatch'] = dispatch_success
     else:
         test_results['dispatch'] = False
+        solution = None
     
     # 4. 运行性能基准测试
     if test_results['structure']:
