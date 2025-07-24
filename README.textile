@@ -1,0 +1,14 @@
+h1. simpower 
+
+h2. 使用 python 的电力系统优化
+
+* 解决问题:
+    - 经济调度 (Economic Dispatch)
+    - 最优潮流 (Optimal Power Flow)
+    - 机组组合 (Unit Commitment)
+    - 随机机组组合 (Stochastic Unit Commitment)
+* 可以通过简单的电子表格创建问题
+* 支持多种求解器
+* "完整文档和教程":http://adamgreenhall.github.io/simpower/
+
+构建状态 !https://travis-ci.com/adamgreenhall/simpower.svg?branch=master!:https://travis-ci.com/adamgreenhall/simpower
