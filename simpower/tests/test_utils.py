@@ -1,8 +1,8 @@
 from pandas import Series, DataFrame
-from minpower.config import user_config
-from minpower import powersystems, schedule, solve
-from minpower.generators import Generator
-from minpower.optimization import value, OptimizationError
+from simpower.config import user_config
+from simpower import powersystems, schedule, solve
+from simpower.generators import Generator
+from simpower.optimization import value, OptimizationError
 
 import nose
 from nose.tools import istest, with_setup, raises, set_trace

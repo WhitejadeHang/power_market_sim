@@ -1,6 +1,6 @@
 """Test the higher level behavior of the unit commitment"""
 import random
-from minpower.generators import Generator
+from simpower.generators import Generator
 import pandas as pd
 from pandas.testing import assert_series_equal
 from .test_utils import *

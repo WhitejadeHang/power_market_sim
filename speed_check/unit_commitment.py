@@ -3,12 +3,12 @@ from vbench.benchmark import Benchmark
 SECTION = 'Unit commitment'
 
 common_setup = """
-from minpower_benchmark_utils import *
+from simpower_benchmark_utils import *
 """
 
 
 setup = common_setup + """
-directory = '~/minpower/minpower/tests/uc'
+directory = '~/simpower/simpower/tests/uc'
 """
 statement = """
 solve_problem(directory,

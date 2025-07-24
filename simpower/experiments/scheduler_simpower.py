@@ -3,19 +3,19 @@ import argparse
 import subprocess
 import os
 from pprint import pprint
-from minpower.config import parse_command_line_config, scheduler_config, user_config
+from simpower.config import parse_command_line_config, scheduler_config, user_config
 
 
 def main():
     """
-    a wrapper to make the minpower script work with cluster schedulers
+    a wrapper to make the simpower script work with cluster schedulers
     or with an ssh call that you start on your laptop and then close the
     connection.
     """
 
-    default_minpower_config = dict(user_config).copy()
+    default_simpower_config = dict(user_config).copy()
     parser = argparse.ArgumentParser(
-        description="Minpower scheduler command line interface"
+        description="Simpower scheduler command line interface"
     )
 
     parser.add_argument(
@@ -25,7 +25,7 @@ def main():
         help="""Mode of scheduler operation:
         qsub: use the qsub cluster scheduler
         nohup: use nohup, call as subprocess, and redirect stdin, stderr
-        pass: just call minpower as a child process (for debugging)
+        pass: just call simpower as a child process (for debugging)
         """,
     )
     parser.add_argument(
@@ -56,11 +56,11 @@ def main():
         help="hours of runtime to limit job to",
     )
 
-    args, minpower_args_raw = parser.parse_known_args()
+    args, simpower_args_raw = parser.parse_known_args()
 
-    minpower_parser = argparse.ArgumentParser("minpower")
-    minpower_args = parse_command_line_config(
-        minpower_parser, preparsed_args=minpower_args_raw
+    simpower_parser = argparse.ArgumentParser("simpower")
+    simpower_args = parse_command_line_config(
+        simpower_parser, preparsed_args=simpower_args_raw
     )
 
     # scheduler config can be loaded from the case directory
@@ -68,27 +68,27 @@ def main():
     args, __ = parser.parse_known_args()
 
     # subprocess style
-    minpower_args["standalone"] = True
-    minpower_args["pid"] = minpower_args["pid"] if minpower_args["pid"] else os.getpid()
+    simpower_args["standalone"] = True
+    simpower_args["pid"] = simpower_args["pid"] if simpower_args["pid"] else os.getpid()
 
     if args.scheduler_mode == "qsub":
         # qsub makes all of its script calls from the home directory
         # so it requires an absolute path
-        minpower_args["directory"] = os.path.abspath(minpower_args["directory"])
+        simpower_args["directory"] = os.path.abspath(simpower_args["directory"])
 
         if (
-            "scenarios_directory" in minpower_args
-            and minpower_args["scenarios_directory"]
+            "scenarios_directory" in simpower_args
+            and simpower_args["scenarios_directory"]
         ):
-            minpower_args["scenarios_directory"] = os.path.abspath(
-                minpower_args["scenarios_directory"]
+            simpower_args["scenarios_directory"] = os.path.abspath(
+                simpower_args["scenarios_directory"]
             )
 
     if args.verbose:
-        pprint(minpower_args)
+        pprint(simpower_args)
 
     scheduler_call = []
-    minpower_call = ["minpower"]
+    simpower_call = ["simpower"]
     stdout = sys.stdout
     stderr = subprocess.STDOUT
 
@@ -102,14 +102,14 @@ def main():
         return s
 
     # make a big chain of args
-    minpower_call.extend(
+    simpower_call.extend(
         sorted(
             [
                 arg2str(k, v)
-                for k, v in list(minpower_args.items())
+                for k, v in list(simpower_args.items())
                 if (k == "directory")
                 or (
-                    (k in default_minpower_config) and (v != default_minpower_config[k])
+                    (k in default_simpower_config) and (v != default_simpower_config[k])
                 )
             ]
         )
@@ -147,9 +147,9 @@ def main():
             )
 
         # need to write a script to disk to call with qsub
-        if minpower_args["standalone_restart"]:
+        if simpower_args["standalone_restart"]:
             # write to the same script, but comment out the original call
-            script_name = "./{}.sh".format(minpower_args["pid"])
+            script_name = "./{}.sh".format(simpower_args["pid"])
             if args.dry_run:
                 print(
                     (
@@ -175,14 +175,14 @@ def main():
             print(
                 (
                     "would have written script {f}: \n{c}".format(
-                        f=script_name, c=" ".join(minpower_call)
+                        f=script_name, c=" ".join(simpower_call)
                     )
                 )
             )
         else:
             with open(script_name, script_mode) as f:
-                f.write(" ".join(minpower_call))
-        minpower_call = [script_name]
+                f.write(" ".join(simpower_call))
+        simpower_call = [script_name]
 
     # actually make the call
     if args.dry_run:
@@ -190,18 +190,18 @@ def main():
             (
                 "would have executed as a {p}:\n{c}".format(
                     p="child process" if mode == "pass" else "subprocess",
-                    c=" ".join((scheduler_call + minpower_call)),
+                    c=" ".join((scheduler_call + simpower_call)),
                 )
             )
         )
     else:
         if mode == "pass":
-            subprocess.call(scheduler_call + minpower_call)
+            subprocess.call(scheduler_call + simpower_call)
             pid = None
         else:
 
             pid = subprocess.Popen(
-                scheduler_call + minpower_call,
+                scheduler_call + simpower_call,
                 stdout=stdout,
                 stderr=stderr,
             ).pid

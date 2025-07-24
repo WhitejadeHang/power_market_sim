@@ -2,8 +2,8 @@ import logging
 import nose
 import numpy as np
 import pandas as pd
-from minpower.tests.test_utils import istest
-from minpower.tests.test_integration import (
+from simpower.tests.test_utils import istest
+from simpower.tests.test_integration import (
     run_case,
     assert_series_equal,
     assert_frame_equal,
