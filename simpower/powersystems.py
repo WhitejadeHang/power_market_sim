@@ -320,8 +320,10 @@ class PowerSystem(OptimizationProblem):
         busNameL.extend(getattrL(generators, "bus"))
         busNameL.extend(getattrL(loads, "bus"))
         # 修复pandas兼容性警告
-        unique_buses = pd.unique(busNameL)
-        if len(unique_buses) > 0:
+        if len(busNameL) > 0:
+            # 转换为numpy数组再使用pd.unique
+            import numpy as np
+            unique_buses = pd.unique(np.array(busNameL))
             busNameL = pd.Series(unique_buses).dropna().tolist()
         else:
             busNameL = []

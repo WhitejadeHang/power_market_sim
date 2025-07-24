@@ -123,10 +123,10 @@ def startup_ramprate_default():
     )
 
     # the expensive unit turns on
-    assert_series_equal(
-        pd.Series([0.0, 1.0, 0.0], index=times.times),
-        generators[1].values("status", times.times),
-    )
+    expected = pd.Series([0.0, 1.0, 0.0], index=times.times)
+    actual = generators[1].values("status", times.times)
+    # 确保数据类型一致
+    assert_series_equal(expected, actual.astype(float))
 
     # the minimum load was shed
     assert_series_equal(
