@@ -1,14 +1,103 @@
-h1. simpower 
+h1. Simpower - 电力系统优化与市场仿真平台
 
-h2. 使用 python 的电力系统优化
+h2. 使用Python的电力系统优化和电力市场仿真
 
-* 解决问题:
-    - 经济调度 (Economic Dispatch)
-    - 最优潮流 (Optimal Power Flow)
-    - 机组组合 (Unit Commitment)
-    - 随机机组组合 (Stochastic Unit Commitment)
-* 可以通过简单的电子表格创建问题
-* 支持多种求解器
-* "完整文档和教程":https://github.com/WhitejadeHang/power_market_sim
+Simpower是一个强大的电力系统优化和电力市场仿真平台，专为研究人员、工程师和学生设计。
 
-构建状态 !https://travis-ci.com/WhitejadeHang/power_market_sim.svg?branch=master!:https://travis-ci.com/WhitejadeHang/power_market_sim
+h3. 🌟 核心功能
+
+* *优化问题求解*:
+    - 经济调度 (Economic Dispatch) - 最小成本发电调度
+    - 最优潮流 (Optimal Power Flow) - 网络约束下的优化调度
+    - 机组组合 (Unit Commitment) - 考虑启停约束的多时段优化
+    - 随机机组组合 (Stochastic Unit Commitment) - 考虑不确定性的鲁棒优化
+
+* *电力市场仿真*:
+    - 节点边际电价 (LMP) 计算 - 实时电价分析
+    - 现货市场仿真 - 投标、出清、定价机制
+    - 备用市场 - 备用容量的定价和调度
+    - 阻塞管理 - 输电阻塞的经济分析
+
+* *系统建模*:
+    - 发电机组建模 (火电、燃气、风电、光伏等)
+    - 负载建模 (时变负载、不确定性建模)
+    - 电网建模 (传输线路、变电站、网络约束)
+
+* *求解器支持*:
+    - 开源求解器: CBC, GLPK (免费使用)
+    - 商业求解器: CPLEX, Gurobi (如已安装)
+    - 完整的对偶变量支持 (节点电价计算)
+
+h3. 🚀 快速开始
+
+bc. # 克隆项目
+git clone https://github.com/WhitejadeHang/power_market_sim
+cd power_market_sim
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行演示
+python3 examples/simple_demo.py
+
+h3. 📚 文档资源
+
+* *中文文档* (推荐):
+    - "详细功能文档":README_CN.md - 完整的功能介绍和使用指南
+    - "快速入门指南":QUICK_START_CN.md - 5分钟快速体验
+    - "简化演示":examples/simple_demo.py - 核心功能演示
+    - "综合案例":examples/basic_examples.py - 详细应用案例
+
+* *English Documentation*:
+    - "Project Homepage":https://github.com/WhitejadeHang/power_market_sim
+    - "Full Documentation":https://github.com/WhitejadeHang/power_market_sim/wiki
+
+h3. 💡 典型应用
+
+* *学术研究*: 电力市场设计、政策影响评估、算法开发
+* *工程实践*: 电网规划、运行分析、投资决策
+* *教学应用*: 理论验证、案例分析、实验设计
+
+h3. 🎯 主要特性
+
+* ✅ *节点电价计算* - 准确的LMP分析，支持电力市场定价
+* ✅ *负载削减优化* - 供需不平衡时的智能决策
+* ✅ *多时段优化* - 24小时滚动机组组合
+* ✅ *不确定性建模* - 风电等可再生能源的随机优化
+* ✅ *结果可视化* - 完整的分析图表和数据导出
+* ✅ *高性能求解* - 支持大规模优化问题
+
+h3. 📊 演示结果
+
+bc. Simpower 电力系统优化与市场仿真演示
+==================================================
+✓ 对偶变量计算已启用 (节点电价功能)
+
+负载(MW)   火电(MW)   燃气(MW)   尖峰(MW)   电价($/MWh)
+------------------------------------------------------------
+80         55.0       15.0       10.0       10.00
+120        95.0       15.0       10.0       10.00
+180        100.0      70.0       10.0       20.00
+250        100.0      80.0       60.0       10000.00 (负载削减)
+
+✅ 经济调度功能正常 - 优化资源配置
+✅ 节点电价计算正确 - 反映边际成本
+✅ 负载削减处理合理 - 供需平衡优化
+
+h3. 🔧 系统要求
+
+* Python >= 3.8
+* 求解器: CBC 或 GLPK (开源) / CPLEX 或 Gurobi (商业)
+* 依赖包: pandas, pyomo, matplotlib, xarray, numpy
+
+h3. 📞 支持与贡献
+
+* "问题反馈":https://github.com/WhitejadeHang/power_market_sim/issues
+* "讨论社区":https://github.com/WhitejadeHang/power_market_sim/discussions
+* "贡献指南":README_CN.md#-贡献指南
+
+构建状态: !https://travis-ci.com/WhitejadeHang/power_market_sim.svg?branch=master!:https://travis-ci.com/WhitejadeHang/power_market_sim
+
+---
+
+*Simpower - 让电力系统优化和市场仿真变得简单而强大！* ⚡
