@@ -346,8 +346,8 @@ def parse_polynomial(s):
         varLetter = m.group(0)
     except AttributeError:
         varLetter = "P"
-    termPattern = re.compile("([+-]?\d*\.?\d*)\**({var}?\^?\d?)".format(var=varLetter))
-    powerPattern = re.compile("{var}\^?(\d)?".format(var=varLetter))
+    termPattern = re.compile(r"([+-]?\d*\.?\d*)\**({var}?\^?\d?)".format(var=varLetter))
+    powerPattern = re.compile(r"{var}\^?(\d)?".format(var=varLetter))
     order_multipliers = {}
 
     for n, p in termPattern.findall(s):

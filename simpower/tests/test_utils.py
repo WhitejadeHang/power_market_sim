@@ -4,9 +4,47 @@ from simpower import powersystems, schedule, solve
 from simpower.generators import Generator
 from simpower.optimization import value, OptimizationError
 
-import nose
-from nose.tools import istest, with_setup, raises, set_trace
-from nose.tools import eq_ as assert_equal
+# Compatibility layer for nose functions
+def istest(func):
+    """Mark a function as a test"""
+    func.__test__ = True
+    return func
+
+def with_setup(setup=None, teardown=None):
+    """Setup and teardown decorator"""
+    def decorator(func):
+        if setup:
+            func.setup = setup
+        if teardown:
+            func.teardown = teardown
+        return func
+    return decorator
+
+def raises(expected_exception):
+    """Decorator to assert that an exception is raised"""
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                func(*args, **kwargs)
+                raise AssertionError(f"Expected {expected_exception.__name__} to be raised")
+            except expected_exception:
+                pass  # Expected
+        wrapper.__name__ = func.__name__
+        return wrapper
+    return decorator
+
+def set_trace():
+    """Set a breakpoint"""
+    import pdb
+    pdb.set_trace()
+
+def assert_equal(a, b, msg=None):
+    """Assert that two values are equal"""
+    if a != b:
+        if msg:
+            raise AssertionError(msg)
+        else:
+            raise AssertionError(f"{a} != {b}")
 
 
 import logging
@@ -79,11 +117,21 @@ def make_expensive_gen(**kwargs):
 def make_loads_times(Pd=200, Pdt=None, **kwargs):
     if Pdt is None:
         times = singletime
-        sched = Series(Pd, index=times)
+        # 使用字符串索引以保持兼容性
+        if hasattr(times, 'strings'):
+            index = times.strings.values
+        else:
+            index = times
+        sched = Series(Pd, index=index)
         loads = [powersystems.Load(schedule=sched, **kwargs)]
     else:
         times = schedule.make_times_basic(N=len(Pdt))
-        sched = Series(Pdt, index=times)
+        # 使用字符串索引以保持兼容性
+        if hasattr(times, 'strings'):
+            index = times.strings.values
+        else:
+            index = times
+        sched = Series(Pdt, index=index)
         loads = [powersystems.Load(schedule=sched, **kwargs)]
 
     return dict(loads=loads, times=times)

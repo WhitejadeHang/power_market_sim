@@ -4,10 +4,10 @@ Provide the defaults and configuration for other modules.
 """
 import os
 import sys
-from configparser import SafeConfigParser
+from configparser import ConfigParser
 from .commonscripts import DotDict, joindir
 
-parser = SafeConfigParser()
+parser = ConfigParser()
 parser.read(
     [
         # the simpower default set, from the simpower/configuration directory
@@ -123,7 +123,7 @@ def get_dir_config(directory):
     pull the config from a specific directory.
     this allows post-load updating of the user_config.
     """
-    dirparser = SafeConfigParser()
+    dirparser = ConfigParser()
     dirparser.read(
         [
             # the simpower default set, from the simpower/configuration directory

@@ -16,7 +16,7 @@ def make_times_basic(N):
     """make a :class:`schedule.TimeIndex` of N times with hourly interval"""
     # 使用当前日期作为起始点，避免只有一个时间点的问题
     start_date = dt.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    dates = date_range(start=start_date, periods=N, freq="H")
+    dates = date_range(start=start_date, periods=N, freq="h")
     return TimeIndex(dates)
 
 
@@ -49,7 +49,7 @@ class TimeIndex(object):
                     # 如果无法转换，创建一个默认的日期时间索引
                     logging.warning(f"无法将索引转换为日期时间索引，使用默认日期: {e}")
                     start_date = dt.now().replace(hour=0, minute=0, second=0, microsecond=0)
-                    self.times = pd.date_range(start=start_date, periods=len(index), freq="H")
+                    self.times = pd.date_range(start=start_date, periods=len(index), freq="h")
         else:
             # 如果不是索引对象，尝试转换
             try:
@@ -57,7 +57,7 @@ class TimeIndex(object):
             except (ValueError, TypeError) as e:
                 logging.warning(f"无法将输入转换为日期时间索引，使用默认日期: {e}")
                 start_date = dt.now().replace(hour=0, minute=0, second=0, microsecond=0)
-                self.times = pd.date_range(start=start_date, periods=len(index), freq="H")
+                self.times = pd.date_range(start=start_date, periods=len(index), freq="h")
         
         self.strings = Series(strings, index=self.times)
         self._set = self.strings.values.tolist()
