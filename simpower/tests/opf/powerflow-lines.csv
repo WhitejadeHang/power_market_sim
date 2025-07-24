@@ -1,0 +1,4 @@
+from,to,power,congestion shadow price
+Seattle,Tacoma,-3.0,-9.0
+Olympia,Tacoma,3.0,-0.0
+Olympia,Seattle,6.0,0.0

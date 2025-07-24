@@ -3,9 +3,13 @@ A selection of integration tests. These are designed to find failures that
 the unit tests don't pick up.
 """
 import os
-import nose
-from nose.tools import istest
 from pandas.testing import assert_frame_equal, assert_series_equal
+
+# Use our nose compatibility layer
+try:
+    from nose.tools import istest
+except ImportError:
+    from .test_utils import istest
 
 from simpower.solve import solve_problem as solve_dir
 from simpower.config import user_config

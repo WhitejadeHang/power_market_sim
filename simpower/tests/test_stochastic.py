@@ -1,7 +1,8 @@
 import logging
-import nose
 import numpy as np
 import pandas as pd
+
+# Use our nose compatibility layer
 from simpower.tests.test_utils import istest
 from simpower.tests.test_integration import (
     run_case,
@@ -49,7 +50,8 @@ def standalone():
     try:
         import tables
     except ImportError:
-        raise nose.SkipTest("standalone mode requires pytables")
+        import pytest
+        pytest.skip("standalone mode requires pytables")
 
     slnA = run_case("stochastic_short_case", deterministic_solve=True)
     slnB = run_case("stochastic_short_case", deterministic_solve=True, standalone=True)
