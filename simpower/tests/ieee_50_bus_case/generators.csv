@@ -1,0 +1,27 @@
+name,bus,type,P max,no load cost,cost curve points filename
+Coal_01_supercritical,Bus_19_urban_medium,coal,774,8232,coal_01_block_bidding.csv
+Coal_02_supercritical,Bus_10_urban_high,coal,640,6134,coal_02_block_bidding.csv
+Coal_03_supercritical,Bus_49_rural,coal,663,5638,coal_03_block_bidding.csv
+Coal_04_supercritical,Bus_08_urban_high,coal,758,10385,coal_04_block_bidding.csv
+Coal_05_supercritical,Bus_16_urban_medium,coal,659,7719,coal_05_block_bidding.csv
+Coal_06_supercritical,Bus_07_urban_high,coal,735,8405,coal_06_block_bidding.csv
+Coal_07_subcritical,Bus_17_urban_medium,coal,488,6561,coal_07_block_bidding.csv
+Coal_08_subcritical,Bus_12_urban_medium,coal,506,6969,coal_08_block_bidding.csv
+Coal_09_subcritical,Bus_05_urban_high,coal,530,6690,coal_09_block_bidding.csv
+Coal_10_subcritical,Bus_15_urban_medium,coal,401,5305,coal_10_block_bidding.csv
+Coal_11_subcritical,Bus_13_urban_medium,coal,465,4684,coal_11_block_bidding.csv
+Coal_12_subcritical,Bus_32_industrial,coal,524,7283,coal_12_block_bidding.csv
+Coal_13_subcritical,Bus_42_rural,coal,476,4059,coal_13_block_bidding.csv
+Coal_14_subcritical,Bus_46_rural,coal,529,6495,coal_14_block_bidding.csv
+Coal_15_old_steam,Bus_37_industrial,coal,313,2929,coal_15_block_bidding.csv
+Coal_16_old_steam,Bus_48_rural,coal,298,2861,coal_16_block_bidding.csv
+Coal_17_old_steam,Bus_29_suburban,coal,358,3503,coal_17_block_bidding.csv
+Coal_18_old_steam,Bus_34_industrial,coal,290,4342,coal_18_block_bidding.csv
+Coal_19_old_steam,Bus_02_urban_high,coal,242,2932,coal_19_block_bidding.csv
+Coal_20_old_steam,Bus_28_suburban,coal,308,3186,coal_20_block_bidding.csv
+Coal_21_old_steam,Bus_44_rural,coal,361,3284,coal_21_block_bidding.csv
+Coal_22_old_steam,Bus_27_suburban,coal,235,3515,coal_22_block_bidding.csv
+Coal_23_small_unit,Bus_41_rural,coal,209,2261,coal_23_block_bidding.csv
+Coal_24_small_unit,Bus_22_suburban,coal,243,2869,coal_24_block_bidding.csv
+Coal_25_small_unit,Bus_47_rural,coal,125,1709,coal_25_block_bidding.csv
+Coal_26_small_unit,Bus_18_urban_medium,coal,220,2276,coal_26_block_bidding.csv
