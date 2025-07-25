@@ -28,6 +28,7 @@ except ImportError:
 
 # 设置中文字体和绘图风格
 CHINESE_FONT_NAME = None
+CHINESE_FONT_PROP = None
 
 try:
     import matplotlib.font_manager as fm
@@ -60,8 +61,16 @@ try:
                 plt.rcParams['font.family'] = 'sans-serif'
                 plt.rcParams['axes.unicode_minus'] = False
                 
-                # 保存字体名称供后续使用
+                # 保存字体名称和属性供后续使用
                 CHINESE_FONT_NAME = font_name
+                CHINESE_FONT_PROP = prop
+                
+                # 清除matplotlib字体缓存以确保新字体生效
+                try:
+                    import matplotlib
+                    matplotlib.font_manager._load_fontmanager(try_read_cache=False)
+                except:
+                    pass
                 
                 print(f"✅ 成功加载中文字体: {font_name} ({os.path.basename(font_path)})")
                 font_found = True
@@ -98,7 +107,9 @@ except:
 # 全局中文字体属性
 def get_chinese_font():
     """获取中文字体属性"""
-    if CHINESE_FONT_NAME:
+    if CHINESE_FONT_PROP:
+        return CHINESE_FONT_PROP
+    elif CHINESE_FONT_NAME:
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
             project_root = os.path.dirname(current_dir)
@@ -108,6 +119,30 @@ def get_chinese_font():
         except:
             pass
     return None
+
+def set_chinese_font_for_axes(ax, chinese_font=None):
+    """为axes对象设置中文字体"""
+    if chinese_font is None:
+        chinese_font = get_chinese_font()
+    
+    if chinese_font:
+        # 获取当前的标题、标签
+        title = ax.get_title()
+        xlabel = ax.get_xlabel()
+        ylabel = ax.get_ylabel()
+        
+        # 重新设置带有中文字体的标题和标签
+        if title:
+            ax.set_title(title, fontproperties=chinese_font)
+        if xlabel:
+            ax.set_xlabel(xlabel, fontproperties=chinese_font)
+        if ylabel:
+            ax.set_ylabel(ylabel, fontproperties=chinese_font)
+        
+        # 设置刻度标签字体
+        for label in ax.get_xticklabels() + ax.get_yticklabels():
+            if hasattr(label, 'get_text') and any('\u4e00' <= char <= '\u9fff' for char in label.get_text()):
+                label.set_fontproperties(chinese_font)
 
 class IEEE50BusResultsAnalyzer:
     """IEEE 50节点案例结果分析器"""
@@ -330,7 +365,7 @@ class IEEE50BusResultsAnalyzer:
         # 创建图形
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
         
-        # 设置图表标题
+        # 设置图表标题和字体
         chinese_font = get_chinese_font()
         if chinese_font:
             fig.suptitle('IEEE 50节点系统发电调度结果分析', fontsize=16, fontweight='bold', fontproperties=chinese_font)
@@ -343,28 +378,33 @@ class IEEE50BusResultsAnalyzer:
         
         wedges, texts, autotexts = ax1.pie(type_power.values, labels=type_power.index, 
                                           autopct='%1.1f%%', colors=colors, startangle=90)
-        ax1.set_title('各类机组发电量占比', fontweight='bold')
+        ax1.set_title('各类机组发电量占比', fontweight='bold', fontproperties=chinese_font)
         
-        # 美化饼图
+        # 美化饼图并设置中文字体
         for autotext in autotexts:
             autotext.set_color('white')
             autotext.set_fontweight('bold')
+        
+        # 设置饼图标签字体
+        if chinese_font:
+            for text in texts:
+                text.set_fontproperties(chinese_font)
         
         # 2. 机组功率输出柱状图
         dispatched_gens = gen_df[gen_df['power'] > 1].sort_values('power', ascending=False)
         
         bars = ax2.bar(range(len(dispatched_gens)), dispatched_gens['power'], 
                       color=dispatched_gens['color'], alpha=0.8)
-        ax2.set_title('机组功率输出排序', fontweight='bold')
-        ax2.set_xlabel('机组排序')
-        ax2.set_ylabel('功率输出 (MW)')
+        ax2.set_title('机组功率输出排序', fontweight='bold', fontproperties=chinese_font)
+        ax2.set_xlabel('机组排序', fontproperties=chinese_font)
+        ax2.set_ylabel('功率输出 (MW)', fontproperties=chinese_font)
         ax2.grid(True, alpha=0.3)
         
         # 添加数值标签
         for i, (bar, power) in enumerate(zip(bars, dispatched_gens['power'])):
             if power > 0:
                 ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 5, 
-                        f'{power:.0f}', ha='center', va='bottom', fontsize=8)
+                        f'{power:.0f}', ha='center', va='bottom', fontsize=8, fontproperties=chinese_font)
         
         # 3. 边际成本与功率输出散点图
         active_gens = gen_df[gen_df['power'] > 1]
@@ -372,14 +412,14 @@ class IEEE50BusResultsAnalyzer:
         scatter = ax3.scatter(active_gens['power'], active_gens['marginal_cost'], 
                              c=active_gens['marginal_cost'], s=100, alpha=0.7, 
                              cmap='viridis', edgecolors='black', linewidth=0.5)
-        ax3.set_title('功率输出 vs 边际成本', fontweight='bold')
-        ax3.set_xlabel('功率输出 (MW)')
-        ax3.set_ylabel('边际成本 ($/MWh)')
+        ax3.set_title('功率输出 vs 边际成本', fontweight='bold', fontproperties=chinese_font)
+        ax3.set_xlabel('功率输出 (MW)', fontproperties=chinese_font)
+        ax3.set_ylabel('边际成本 ($/MWh)', fontproperties=chinese_font)
         ax3.grid(True, alpha=0.3)
         
         # 添加颜色条
         cbar = plt.colorbar(scatter, ax=ax3)
-        cbar.set_label('边际成本 ($/MWh)')
+        cbar.set_label('边际成本 ($/MWh)', fontproperties=chinese_font)
         
         # 4. 机组类型统计表
         type_stats = gen_df.groupby('type').agg({
@@ -423,7 +463,7 @@ class IEEE50BusResultsAnalyzer:
                 else:
                     cell.set_facecolor('#F2F2F2' if i % 2 == 0 else 'white')
         
-        ax4.set_title('机组类型统计', fontweight='bold', pad=20)
+        ax4.set_title('机组类型统计', fontweight='bold', pad=20, fontproperties=chinese_font)
         
         plt.tight_layout()
         
@@ -472,9 +512,13 @@ class IEEE50BusResultsAnalyzer:
         
         bus_df = pd.DataFrame(bus_data)
         
-        # 创建图形
+        # 创建图形和设置字体
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-        fig.suptitle('IEEE 50节点系统节点电价(LMP)分析', fontsize=16, fontweight='bold')
+        chinese_font = get_chinese_font()
+        if chinese_font:
+            fig.suptitle('IEEE 50节点系统节点电价(LMP)分析', fontsize=16, fontweight='bold', fontproperties=chinese_font)
+        else:
+            fig.suptitle('IEEE 50节点系统节点电价(LMP)分析', fontsize=16, fontweight='bold')
         
         # 1. 各区域LMP分布箱线图
         zone_order = ['都市高负荷区', '都市中负荷区', '郊区', '工业区', '农村区']
@@ -483,10 +527,15 @@ class IEEE50BusResultsAnalyzer:
         box_data = [bus_df[bus_df['zone'] == zone]['lmp'].values for zone in zone_order]
         
         bp = ax1.boxplot(box_data, labels=zone_order, patch_artist=True)
-        ax1.set_title('各区域节点电价分布', fontweight='bold')
-        ax1.set_ylabel('节点电价 ($/MWh)')
+        ax1.set_title('各区域节点电价分布', fontweight='bold', fontproperties=chinese_font)
+        ax1.set_ylabel('节点电价 ($/MWh)', fontproperties=chinese_font)
         ax1.tick_params(axis='x', rotation=45)
         ax1.grid(True, alpha=0.3)
+        
+        # 设置x轴标签字体
+        if chinese_font:
+            for label in ax1.get_xticklabels():
+                label.set_fontproperties(chinese_font)
         
         # 设置箱线图颜色
         for patch, color in zip(bp['boxes'], zone_colors):
@@ -502,20 +551,20 @@ class IEEE50BusResultsAnalyzer:
             lmp_matrix[row, col] = bus['lmp']
         
         im = ax2.imshow(lmp_matrix, cmap='RdYlBu_r', aspect='auto')
-        ax2.set_title('节点电价热力图', fontweight='bold')
-        ax2.set_xlabel('节点列')
-        ax2.set_ylabel('节点行')
+        ax2.set_title('节点电价热力图', fontweight='bold', fontproperties=chinese_font)
+        ax2.set_xlabel('节点列', fontproperties=chinese_font)
+        ax2.set_ylabel('节点行', fontproperties=chinese_font)
         
         # 添加颜色条
         cbar = plt.colorbar(im, ax=ax2)
-        cbar.set_label('LMP ($/MWh)')
+        cbar.set_label('LMP ($/MWh)', fontproperties=chinese_font)
         
         # 在热力图上添加数值
         for i in range(5):
             for j in range(10):
                 if lmp_matrix[i, j] > 0:
                     text = ax2.text(j, i, f'{lmp_matrix[i, j]:.1f}', 
-                                   ha="center", va="center", color="black", fontsize=8)
+                                   ha="center", va="center", color="black", fontsize=8, fontproperties=chinese_font)
         
         # 3. LMP与负荷关系散点图
         non_zero_buses = bus_df[bus_df['lmp'] > 0]
@@ -523,9 +572,9 @@ class IEEE50BusResultsAnalyzer:
         scatter = ax3.scatter(non_zero_buses['load'], non_zero_buses['lmp'], 
                              c=non_zero_buses['lmp'], s=80, alpha=0.7, 
                              cmap='plasma', edgecolors='black', linewidth=0.5)
-        ax3.set_title('节点负荷 vs 节点电价', fontweight='bold')
-        ax3.set_xlabel('节点负荷 (MW)')
-        ax3.set_ylabel('节点电价 ($/MWh)')
+        ax3.set_title('节点负荷 vs 节点电价', fontweight='bold', fontproperties=chinese_font)
+        ax3.set_xlabel('节点负荷 (MW)', fontproperties=chinese_font)
+        ax3.set_ylabel('节点电价 ($/MWh)', fontproperties=chinese_font)
         ax3.grid(True, alpha=0.3)
         
         # 添加趋势线
@@ -568,7 +617,7 @@ class IEEE50BusResultsAnalyzer:
         
         ax4.text(0.05, 0.95, stats_text, transform=ax4.transAxes, fontsize=11,
                 verticalalignment='top', bbox=dict(boxstyle="round,pad=0.5", 
-                facecolor="lightblue", alpha=0.8))
+                facecolor="lightblue", alpha=0.8), fontproperties=chinese_font)
         
         plt.tight_layout()
         
@@ -591,7 +640,11 @@ class IEEE50BusResultsAnalyzer:
         
         # 创建图形
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-        fig.suptitle('IEEE 50节点系统成本分析', fontsize=16, fontweight='bold')
+        chinese_font = get_chinese_font()
+        if chinese_font:
+            fig.suptitle('IEEE 50节点系统成本分析', fontsize=16, fontweight='bold', fontproperties=chinese_font)
+        else:
+            fig.suptitle('IEEE 50节点系统成本分析', fontsize=16, fontweight='bold')
         
         # 1. 总成本构成饼图
         cost_components = {
@@ -608,15 +661,20 @@ class IEEE50BusResultsAnalyzer:
                                               labels=cost_components.keys(), 
                                               autopct='%1.1f%%', colors=colors, 
                                               startangle=90)
-            ax1.set_title('总成本构成', fontweight='bold')
+            ax1.set_title('总成本构成', fontweight='bold', fontproperties=chinese_font)
             
             for autotext in autotexts:
                 autotext.set_color('white')
                 autotext.set_fontweight('bold')
+            
+            # 设置饼图标签字体
+            if chinese_font:
+                for text in texts:
+                    text.set_fontproperties(chinese_font)
         else:
             ax1.text(0.5, 0.5, '无成本数据', ha='center', va='center', 
-                    transform=ax1.transAxes, fontsize=14)
-            ax1.set_title('总成本构成', fontweight='bold')
+                    transform=ax1.transAxes, fontsize=14, fontproperties=chinese_font)
+            ax1.set_title('总成本构成', fontweight='bold', fontproperties=chinese_font)
         
         # 2. 各机组燃料成本柱状图
         gen_costs = []
@@ -650,20 +708,20 @@ class IEEE50BusResultsAnalyzer:
             
             bars = ax2.bar(range(len(gen_costs_df)), gen_costs_df['fuel_cost'], 
                           color=gen_costs_df['color'], alpha=0.8)
-            ax2.set_title('各机组燃料成本', fontweight='bold')
-            ax2.set_xlabel('机组排序')
-            ax2.set_ylabel('燃料成本 ($)')
+            ax2.set_title('各机组燃料成本', fontweight='bold', fontproperties=chinese_font)
+            ax2.set_xlabel('机组排序', fontproperties=chinese_font)
+            ax2.set_ylabel('燃料成本 ($)', fontproperties=chinese_font)
             ax2.grid(True, alpha=0.3)
             
             # 添加数值标签
             for i, (bar, cost) in enumerate(zip(bars, gen_costs_df['fuel_cost'])):
                 if cost > 0:
                     ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + max(gen_costs_df['fuel_cost'])*0.01, 
-                            f'${cost:,.0f}', ha='center', va='bottom', fontsize=8, rotation=90)
+                            f'${cost:,.0f}', ha='center', va='bottom', fontsize=8, rotation=90, fontproperties=chinese_font)
         else:
             ax2.text(0.5, 0.5, '无燃料成本数据', ha='center', va='center', 
-                    transform=ax2.transAxes, fontsize=14)
-            ax2.set_title('各机组燃料成本', fontweight='bold')
+                    transform=ax2.transAxes, fontsize=14, fontproperties=chinese_font)
+            ax2.set_title('各机组燃料成本', fontweight='bold', fontproperties=chinese_font)
         
         # 3. 功率-成本效率散点图
         if gen_costs:
@@ -675,22 +733,22 @@ class IEEE50BusResultsAnalyzer:
                 scatter = ax3.scatter(valid_gens['power'], valid_gens['unit_cost'], 
                                      c=valid_gens['unit_cost'], s=100, alpha=0.7, 
                                      cmap='Reds', edgecolors='black', linewidth=0.5)
-                ax3.set_title('发电量 vs 单位成本', fontweight='bold')
-                ax3.set_xlabel('发电量 (MW)')
-                ax3.set_ylabel('单位成本 ($/MWh)')
+                ax3.set_title('发电量 vs 单位成本', fontweight='bold', fontproperties=chinese_font)
+                ax3.set_xlabel('发电量 (MW)', fontproperties=chinese_font)
+                ax3.set_ylabel('单位成本 ($/MWh)', fontproperties=chinese_font)
                 ax3.grid(True, alpha=0.3)
                 
                 # 添加颜色条
                 cbar = plt.colorbar(scatter, ax=ax3)
-                cbar.set_label('单位成本 ($/MWh)')
+                cbar.set_label('单位成本 ($/MWh)', fontproperties=chinese_font)
             else:
                 ax3.text(0.5, 0.5, '无有效单位成本数据', ha='center', va='center', 
-                        transform=ax3.transAxes, fontsize=14)
-                ax3.set_title('发电量 vs 单位成本', fontweight='bold')
+                        transform=ax3.transAxes, fontsize=14, fontproperties=chinese_font)
+                ax3.set_title('发电量 vs 单位成本', fontweight='bold', fontproperties=chinese_font)
         else:
             ax3.text(0.5, 0.5, '无成本数据', ha='center', va='center', 
-                    transform=ax3.transAxes, fontsize=14)
-            ax3.set_title('发电量 vs 单位成本', fontweight='bold')
+                    transform=ax3.transAxes, fontsize=14, fontproperties=chinese_font)
+            ax3.set_title('发电量 vs 单位成本', fontweight='bold', fontproperties=chinese_font)
         
         # 4. 成本统计表
         ax4.axis('off')
@@ -718,7 +776,7 @@ class IEEE50BusResultsAnalyzer:
         
         ax4.text(0.05, 0.95, stats_text, transform=ax4.transAxes, fontsize=11,
                 verticalalignment='top', bbox=dict(boxstyle="round,pad=0.5", 
-                facecolor="lightgreen", alpha=0.8))
+                facecolor="lightgreen", alpha=0.8), fontproperties=chinese_font)
         
         plt.tight_layout()
         
@@ -826,7 +884,8 @@ class IEEE50BusResultsAnalyzer:
                     ax.scatter(x, y, s=200, c='red', marker='^', 
                              edgecolors='black', linewidth=1, alpha=0.9, zorder=5)
             
-            ax.set_title('IEEE 50节点网络拓扑图', fontsize=16, fontweight='bold', pad=20)
+            chinese_font = get_chinese_font()
+            ax.set_title('IEEE 50节点网络拓扑图', fontsize=16, fontweight='bold', pad=20, fontproperties=chinese_font)
             ax.axis('off')
             
             # 添加图例
@@ -839,7 +898,10 @@ class IEEE50BusResultsAnalyzer:
                 plt.scatter([], [], c='red', s=100, marker='^', label='发电厂')
             ]
             
-            ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(0, 1))
+            if chinese_font:
+                legend = ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(0, 1), prop=chinese_font)
+            else:
+                legend = ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(0, 1))
             
             # 添加统计信息
             stats_text = f"""
@@ -852,7 +914,7 @@ class IEEE50BusResultsAnalyzer:
             
             ax.text(0.02, 0.02, stats_text, transform=ax.transAxes, fontsize=10,
                    verticalalignment='bottom', bbox=dict(boxstyle="round,pad=0.3", 
-                   facecolor="white", alpha=0.9))
+                   facecolor="white", alpha=0.9), fontproperties=chinese_font)
             
             plt.tight_layout()
             
@@ -874,7 +936,11 @@ class IEEE50BusResultsAnalyzer:
             return
         
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 10))
-        fig.suptitle('IEEE 50节点系统负荷曲线分析', fontsize=16, fontweight='bold')
+        chinese_font = get_chinese_font()
+        if chinese_font:
+            fig.suptitle('IEEE 50节点系统负荷曲线分析', fontsize=16, fontweight='bold', fontproperties=chinese_font)
+        else:
+            fig.suptitle('IEEE 50节点系统负荷曲线分析', fontsize=16, fontweight='bold')
         
         # 1. 24小时负荷曲线
         times = self.load_curve_df['time'].values
@@ -887,9 +953,9 @@ class IEEE50BusResultsAnalyzer:
             time_labels.append(f"{hour:02d}:00")
         
         ax1.plot(range(len(loads)), loads, linewidth=2, color='#2E8B57', marker='o', markersize=3)
-        ax1.set_title('系统负荷曲线 (96个时段)', fontweight='bold')
-        ax1.set_xlabel('时间')
-        ax1.set_ylabel('系统负荷 (MW)')
+        ax1.set_title('系统负荷曲线 (96个时段)', fontweight='bold', fontproperties=chinese_font)
+        ax1.set_xlabel('时间', fontproperties=chinese_font)
+        ax1.set_ylabel('系统负荷 (MW)', fontproperties=chinese_font)
         ax1.grid(True, alpha=0.3)
         
         # 设置x轴标签
@@ -906,11 +972,11 @@ class IEEE50BusResultsAnalyzer:
         
         ax1.annotate(f'峰值: {loads[max_idx]:.1f} MW\n{times[max_idx]}', 
                     xy=(max_idx, loads[max_idx]), xytext=(max_idx+10, loads[max_idx]+100),
-                    arrowprops=dict(arrowstyle='->', color='red'), fontsize=10)
+                    arrowprops=dict(arrowstyle='->', color='red'), fontsize=10, fontproperties=chinese_font)
         
         ax1.annotate(f'谷值: {loads[min_idx]:.1f} MW\n{times[min_idx]}', 
                     xy=(min_idx, loads[min_idx]), xytext=(min_idx+10, loads[min_idx]-100),
-                    arrowprops=dict(arrowstyle='->', color='blue'), fontsize=10)
+                    arrowprops=dict(arrowstyle='->', color='blue'), fontsize=10, fontproperties=chinese_font)
         
         # 2. 负荷统计分析
         ax2.axis('off')
@@ -958,7 +1024,7 @@ class IEEE50BusResultsAnalyzer:
         
         ax2.text(0.05, 0.95, stats_text, transform=ax2.transAxes, fontsize=12,
                 verticalalignment='top', bbox=dict(boxstyle="round,pad=0.5", 
-                facecolor="lightyellow", alpha=0.9))
+                facecolor="lightyellow", alpha=0.9), fontproperties=chinese_font)
         
         plt.tight_layout()
         
