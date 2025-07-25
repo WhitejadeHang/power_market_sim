@@ -27,32 +27,62 @@ except ImportError:
     HAS_NETWORKX = False
 
 # 设置中文字体和绘图风格
+CHINESE_FONT_NAME = None
+
 try:
-    # 尝试设置中文字体
     import matplotlib.font_manager as fm
-    # 查找系统中的中文字体
-    chinese_fonts = ['SimHei', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei']
-    available_font = None
-    for font in chinese_fonts:
-        try:
-            plt.rcParams['font.sans-serif'] = [font, 'DejaVu Sans']
-            available_font = font
-            break
-        except:
-            continue
+    import os
     
-    if not available_font:
-        # 如果没有中文字体，使用英文
+    # 获取当前脚本的目录
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(current_dir)
+    
+    # 中文字体文件路径
+    font_paths = [
+        os.path.join(project_root, 'fonts/SubsetOTF/CN/SourceHanSansCN-Regular.otf'),
+        os.path.join(project_root, 'fonts/SubsetOTF/CN/SourceHanSansCN-Medium.otf'),
+        os.path.join(project_root, 'fonts/SubsetOTF/CN/SourceHanSansCN-Bold.otf'),
+    ]
+    
+    # 尝试使用下载的中文字体
+    font_found = False
+    for font_path in font_paths:
+        if os.path.exists(font_path):
+            try:
+                # 注册字体
+                fm.fontManager.addfont(font_path)
+                # 获取字体属性
+                prop = fm.FontProperties(fname=font_path)
+                font_name = prop.get_name()
+                
+                # 设置为默认字体
+                plt.rcParams['font.sans-serif'] = [font_name, 'DejaVu Sans', 'Arial']
+                plt.rcParams['font.family'] = 'sans-serif'
+                plt.rcParams['axes.unicode_minus'] = False
+                
+                # 保存字体名称供后续使用
+                CHINESE_FONT_NAME = font_name
+                
+                print(f"✅ 成功加载中文字体: {font_name} ({os.path.basename(font_path)})")
+                font_found = True
+                break
+            except Exception as e:
+                print(f"⚠️ 加载字体失败 {font_path}: {e}")
+                continue
+    
+    if not font_found:
+        # 如果没有找到中文字体，使用英文
         plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['axes.unicode_minus'] = False
         print("⚠️ 未找到中文字体，将使用英文显示")
-    else:
-        print(f"✅ 使用中文字体: {available_font}")
         
-    plt.rcParams['axes.unicode_minus'] = False
-except:
+except Exception as e:
     plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
+    plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['axes.unicode_minus'] = False
-    print("⚠️ 字体设置失败，使用默认字体")
+    print(f"⚠️ 字体设置失败: {e}")
+    print("使用默认英文字体")
 
 # 设置绘图风格
 try:
@@ -64,6 +94,20 @@ try:
 except:
     plt.style.use('default')
 
+
+# 全局中文字体属性
+def get_chinese_font():
+    """获取中文字体属性"""
+    if CHINESE_FONT_NAME:
+        try:
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(current_dir)
+            font_path = os.path.join(project_root, 'fonts/SubsetOTF/CN/SourceHanSansCN-Regular.otf')
+            if os.path.exists(font_path):
+                return fm.FontProperties(fname=font_path)
+        except:
+            pass
+    return None
 
 class IEEE50BusResultsAnalyzer:
     """IEEE 50节点案例结果分析器"""
@@ -285,7 +329,13 @@ class IEEE50BusResultsAnalyzer:
         
         # 创建图形
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-        fig.suptitle('IEEE 50节点系统发电调度结果分析', fontsize=16, fontweight='bold')
+        
+        # 设置图表标题
+        chinese_font = get_chinese_font()
+        if chinese_font:
+            fig.suptitle('IEEE 50节点系统发电调度结果分析', fontsize=16, fontweight='bold', fontproperties=chinese_font)
+        else:
+            fig.suptitle('IEEE 50节点系统发电调度结果分析', fontsize=16, fontweight='bold')
         
         # 1. 按机组类型的发电量分布
         type_power = gen_df.groupby('type')['power'].sum()
