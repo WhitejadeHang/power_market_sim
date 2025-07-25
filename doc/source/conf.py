@@ -1,11 +1,11 @@
 # pip install sphinx, sphinxcontrib-programoutput
 import sys, os
 
-# if you don't have minpower in your python path
-# sys.path.insert(0, os.path.abspath('../../minpower')) #code location
+# if you don't have simpower in your python path
+# sys.path.insert(0, os.path.abspath('../../simpower')) #code location
 
 # General information about the project.
-project = "minpower"
+project = "simpower"
 copyright = "Adam Greenhall"
 author = "Adam Greenhall"
 html_theme = "alabaster"

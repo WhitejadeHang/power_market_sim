@@ -31,8 +31,8 @@ else:
     HOME = '/home/%s' % USERNAME
 
 
-REPO_PATH = '/home/adam/minpower'
-REPO_URL = 'git@github.com:adamgreenhall/minpower.git'
+REPO_PATH = '/home/adam/simpower'
+REPO_URL = 'git@github.com:WhitejadeHang/power_market_sim.git'
 DB_PATH = os.path.join(REPO_PATH,'speed_check/benchmarks.db')
 TMP_DIR = os.path.join(REPO_PATH,'tmp_build')
 
@@ -44,7 +44,7 @@ python setup.py build_ext --inplace
 """
 START_DATE = datetime(2012, 12, 11)
 
-dependencies = ['minpower_benchmark_utils.py']
+dependencies = ['simpower_benchmark_utils.py']
 
 repo = GitRepo(REPO_PATH)
 

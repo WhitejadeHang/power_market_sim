@@ -57,7 +57,7 @@ def solve_multistage_standalone(power_system, times, scenario_tree, data):
         storage = store_times(t_stage, storage)
         storage.close()
         storage = None
-        command = "standalone_minpower {dir} {stg} {pid} {db}".format(
+        command = "standalone_simpower {dir} {stg} {pid} {db}".format(
             dir=user_config.directory,
             stg=stg + stg_start,
             pid="--pid {}".format(pid) if has_pid else "",
@@ -75,7 +75,7 @@ def solve_multistage_standalone(power_system, times, scenario_tree, data):
 
 
 def standaloneUC():
-    """the hook for the ``standalone_minpower`` script"""
+    """the hook for the ``standalone_simpower`` script"""
     from .standalone import store_state, load_state
 
     parser = argparse.ArgumentParser()
@@ -106,7 +106,7 @@ def standaloneUC():
 
         store = store_state(power_system, times, sln)
         store.close()
-    except:
+    except Exception:
         if user_config.debugger or args.debugger:
             __, __, tb = sys.exc_info()
             traceback.print_exc()
@@ -147,7 +147,7 @@ def solve_problem(
     logging.debug(dict(user_config))
 
     start_time = timer.time()
-    logging.debug("Minpower reading {}".format(datadir))
+    logging.debug("Simpower reading {}".format(datadir))
     generators, loads, lines, times, scenario_tree, data = get_data.parsedir()
     logging.debug("data read")
     power_system = powersystems.PowerSystem(generators, loads, lines)
@@ -278,7 +278,7 @@ def _setup_logging(pid=None):
             pid_clean = str(pid).replace('"', '').replace("'", "").replace('\\', '').replace('/', '')
             log_filename = "{}.log".format(pid_clean)
         else:
-            log_filename = "minpower.log"
+            log_filename = "simpower.log"
         
         kwds["filename"] = joindir(user_config.directory, log_filename)
     if (user_config.logging_level > 10) and ("filename" not in kwds):
@@ -289,12 +289,12 @@ def _setup_logging(pid=None):
 
 def main():
     """
-    The command line interface for minpower. For more info use:
-    ``minpower --help``
+    The command line interface for simpower. For more info use:
+    ``simpower --help``
     """
 
     args = parse_command_line_config(
-        argparse.ArgumentParser(description="Minpower command line interface")
+        argparse.ArgumentParser(description="Simpower command line interface")
     )
 
     directory = user_config.directory
@@ -309,13 +309,13 @@ def main():
 
         prof = cProfile.Profile()
         prof.runcall(solve_problem, directory)
-        prof.dump_stats("minpower.profile")
+        prof.dump_stats("simpower.profile")
 
     else:
         # solve the problem with those arguments
         try:
             solve_problem(directory)
-        except:
+        except Exception:
             if args["debugger"]:
                 __, __, tb = sys.exc_info()
                 traceback.print_exc()

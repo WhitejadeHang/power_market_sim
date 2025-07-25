@@ -1,5 +1,5 @@
 """Test for memory leaks"""
-from minpower import powersystems, solve
+from simpower import powersystems, solve
 from .test_utils import solve_problem, make_loads_times
 import objgraph
 import inspect

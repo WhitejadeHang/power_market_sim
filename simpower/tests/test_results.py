@@ -1,5 +1,5 @@
 from .test_utils import *
-from minpower.results import make_solution
+from simpower.results import make_solution
 
 
 @istest

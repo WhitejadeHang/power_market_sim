@@ -1,5 +1,5 @@
-from minpower.tests.test_utils import user_config, istest, with_setup, reset_config
-from minpower.get_data import parsedir
+from simpower.tests.test_utils import user_config, istest, with_setup, reset_config
+from simpower.get_data import parsedir
 import os
 
 

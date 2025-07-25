@@ -4,10 +4,10 @@ Do an many economic dispatches over a range of load values to get an
 """
 
 
-from minpower.config import user_config
-from minpower.get_data import parsedir
-from minpower.commonscripts import joindir
-from minpower.tests.test_utils import make_loads_times, solve_problem
+from simpower.config import user_config
+from simpower.get_data import parsedir
+from simpower.commonscripts import joindir
+from simpower.tests.test_utils import make_loads_times, solve_problem
 from pandas import DataFrame, Series, Index
 import numpy as np
 import matplotlib.pyplot as plt

@@ -32,7 +32,7 @@ try:  # for development
     ipython_shell = (
         InteractiveShellEmbed()
     )  # config=cfg, user_ns=namespace, banner2=banner)
-except:
+except ImportError:
     from pdb import set_trace
 
 

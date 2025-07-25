@@ -1,20 +1,20 @@
 """
 Provide the defaults and configuration for other modules.
-`user_config` is treated as a global in minpower.
+`user_config` is treated as a global in simpower.
 """
 import os
 import sys
-from configparser import SafeConfigParser
+from configparser import ConfigParser
 from .commonscripts import DotDict, joindir
 
-parser = SafeConfigParser()
+parser = ConfigParser()
 parser.read(
     [
-        # the minpower default set, from the minpower/configuration directory
-        joindir(os.path.split(__file__)[0], "configuration/minpower.cfg"),
+        # the simpower default set, from the simpower/configuration directory
+        joindir(os.path.split(__file__)[0], "configuration/simpower.cfg"),
         # the user's global overrides, from the home directory
-        os.path.expanduser("~/minpower.cfg"),
-        os.path.expanduser("~/.minpowerrc"),
+        os.path.expanduser("~/simpower.cfg"),
+        os.path.expanduser("~/.simpowerrc"),
     ]
 )
 
@@ -81,10 +81,10 @@ def parser_value(parser, section, key, opt_type):
 
 
 def parse_config(parser):
-    minpower_config = DotDict(
+    simpower_config = DotDict(
         dict(
             [
-                (k, parser_value(parser, "minpower", k, v))
+                (k, parser_value(parser, "simpower", k, v))
                 for k, v in list(option_types.items())
             ]
         )
@@ -101,7 +101,7 @@ def parse_config(parser):
         )
     )
 
-    return minpower_config, scheduler_config
+    return simpower_config, scheduler_config
 
 
 user_config, scheduler_config = parse_config(parser)
@@ -123,17 +123,17 @@ def get_dir_config(directory):
     pull the config from a specific directory.
     this allows post-load updating of the user_config.
     """
-    dirparser = SafeConfigParser()
+    dirparser = ConfigParser()
     dirparser.read(
         [
-            # the minpower default set, from the minpower/configuration directory
+            # the simpower default set, from the simpower/configuration directory
             # need this to set the defaults
-            joindir(os.path.split(__file__)[0], "configuration/minpower.cfg"),
+            joindir(os.path.split(__file__)[0], "configuration/simpower.cfg"),
             # need the home directory overrides too
-            os.path.expanduser("~/minpower.cfg"),
-            os.path.expanduser("~/.minpowerrc"),
+            os.path.expanduser("~/simpower.cfg"),
+            os.path.expanduser("~/.simpowerrc"),
             # the directory's defaults
-            joindir(directory, "minpower.cfg"),
+            joindir(directory, "simpower.cfg"),
         ]
     )
 
@@ -336,7 +336,7 @@ def setup_parser_args(parser):
         "--profile",
         action="store_true",
         default=False,
-        help="run cProfile and output to minpower.profile",
+        help="run cProfile and output to simpower.profile",
     )
     debugging.add_argument(
         "--show_config",
@@ -419,7 +419,7 @@ def setup_parser_args(parser):
     add_opt(
         parser,
         "on_complete_script",
-        help="run a script on completion of the minpower script",
+        help="run a script on completion of the simpower script",
     )
 
     # NOTE - don't let defaults creep into this defenition

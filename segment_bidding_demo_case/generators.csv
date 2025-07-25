@@ -1,0 +1,5 @@
+name,type,P max,no load cost,cost curve points filename
+Coal_Unit_1,coal,300,150,coal_unit_1_bids.csv
+Gas_Unit_1,natural gas,200,80,gas_unit_1_bids.csv
+Gas_Unit_2,natural gas,150,60,gas_unit_2_bids.csv
+Hydro_Unit,hydro,100,10,hydro_unit_bids.csv

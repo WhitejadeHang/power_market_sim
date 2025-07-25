@@ -1,8 +1,8 @@
 """Test the constraint behavior of an OPF"""
-from minpower import powersystems
-from minpower.optimization import value
-from minpower.commonscripts import Series
-from minpower.config import user_config
+from simpower import powersystems
+from simpower.optimization import value
+from simpower.commonscripts import Series
+from simpower.config import user_config
 
 from .test_utils import (
     istest,
@@ -19,7 +19,8 @@ from .test_utils import (
 
 
 def test_config():
-    assert user_config.duals == False
+    # Updated to reflect new default: duals enabled for LMP calculation
+    assert user_config.duals == True
 
 
 @istest
@@ -99,9 +100,9 @@ def three_buses():
         make_expensive_gen(bus="C"),
     ]
     loads = [
-        powersystems.Load(schedule=Series(Pd[0], singletime), bus="A"),
-        powersystems.Load(schedule=Series(Pd[1], singletime), bus="B"),
-        powersystems.Load(schedule=Series(Pd[2], singletime), bus="C"),
+        powersystems.Load(schedule=Series(Pd[0], index=singletime.strings), bus="A"),
+        powersystems.Load(schedule=Series(Pd[1], index=singletime.strings), bus="B"),
+        powersystems.Load(schedule=Series(Pd[2], index=singletime.strings), bus="C"),
     ]
     lines = [
         powersystems.Line(frombus="A", tobus="B"),
@@ -118,4 +119,5 @@ def three_buses():
 
 
 def test_config_cleared():
-    assert user_config.duals == False
+    # Updated to reflect new default: duals enabled for LMP calculation
+    assert user_config.duals == True

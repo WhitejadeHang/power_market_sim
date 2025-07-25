@@ -1,0 +1,4 @@
+name,type,P max,no load cost,cost curve points filename
+Coal_Plant_1,coal,400,150,coal_block_bidding.csv
+Gas_Plant_1,gas,300,80,gas_block_bidding.csv
+Wind_Farm_1,wind,200,0,wind_block_bidding.csv

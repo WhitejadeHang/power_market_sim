@@ -1,0 +1,29 @@
+
+IEEE 50-Bus Economic Dispatch Case Statistics
+=============================================
+
+Network Configuration:
+- Buses: 50
+- Transmission Lines: 77
+- Generators: 26 coal plants
+- Time Periods: 96 (15-min intervals, 24 hours)
+
+Generator Summary:
+- Total Generators: 26
+- Total Generation Capacity: 10,986 MW
+System Load Range: 7761.2 - 8545.7 MW
+Average System Load: 8212.1 MW
+Reserve Margin: 28.6%
+
+Load Profile:
+- Peak Load Time: 20:30
+- Min Load Time: 00:00
+- Load Factor: 0.961
+
+File Structure:
+- buses.csv: Network bus data
+- lines.csv: Transmission line data  
+- generators.csv: Generator specifications
+- coal_XX_block_bidding.csv: Block bidding curves (26 files)
+- loads.csv: Load data for all buses and time periods
+- system_load_curve.csv: System-wide load curve

@@ -1,8 +1,8 @@
-from minpower.config import user_config, parse_command_line_config
-from minpower.get_data import _load_raw_data, _parse_raw_data, setup_times
-from minpower.commonscripts import joindir, set_trace
-from minpower.powersystems import PowerSystem
-from minpower.solve import create_solve_problem
+from simpower.config import user_config, parse_command_line_config
+from simpower.get_data import _load_raw_data, _parse_raw_data, setup_times
+from simpower.commonscripts import joindir, set_trace
+from simpower.powersystems import PowerSystem
+from simpower.solve import create_solve_problem
 import pandas as pd
 import argparse
 
@@ -77,7 +77,7 @@ def main():
     )
     parser.add_argument("--output_filename", default="initial.csv")
 
-    # parse all of the standard minpower options
+    # parse all of the standard simpower options
     args = parse_command_line_config(parser)
     initial_dispatch(args["directory"], args["output_filename"])
 

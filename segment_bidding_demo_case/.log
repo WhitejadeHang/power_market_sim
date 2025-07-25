@@ -1,0 +1,93 @@
+2025-07-24 08:07:39 INFO: Solving with cbc
+2025-07-24 08:07:39 INFO: Problem solved in 0.019582271575927734s.
+2025-07-24 08:07:39 INFO: resolving fixed-integer LP for duals
+2025-07-24 08:07:39 INFO: 
+2025-07-24 08:07:39 INFO: Solution information
+2025-07-24 08:07:39 INFO: ----------
+2025-07-24 08:07:39 INFO: 
+2025-07-24 08:07:39 INFO: Status
+2025-07-24 08:07:39 INFO:             g0  g1  g2  g3
+2025-07-24 08:07:39 INFO: time
+2025-07-24 08:07:39 INFO: 2025-07-24   1   1   1   1
+2025-07-24 08:07:39 INFO: Power
+2025-07-24 08:07:39 INFO:                g0    g1    g2     g3
+2025-07-24 08:07:39 INFO: time
+2025-07-24 08:07:39 INFO: 2025-07-24  300.0  80.0  70.0  100.0
+2025-07-24 08:07:39 INFO: IC
+2025-07-24 08:07:39 INFO:               g0    g1         g2   g3
+2025-07-24 08:07:39 INFO: time
+2025-07-24 08:07:39 INFO: 2025-07-24  18.0  17.5  18.333333  2.0
+2025-07-24 08:07:39 INFO: 
+2025-07-24 08:07:39 INFO: price=[18.333333]
+2025-07-24 08:07:39 INFO: load info:
+2025-07-24 08:07:39 INFO: name=['Industrial_Load', 'Residential_Load']
+2025-07-24 08:07:39 INFO: Pd=[300.0, 250.0]
+2025-07-24 08:07:39 INFO: 
+2025-07-24 08:07:39 INFO: objective cost=7433.3333
+2025-07-24 08:07:39 INFO: total cost of generation=7433.3333
+2025-07-24 08:07:39 INFO: linearized fuel cost of generation=7433.3333
+2025-07-24 08:07:39 INFO: polynomial fuel cost of generation=7433.333333333333
+2025-07-24 08:07:39 INFO: percentage difference		=0.00%
+2025-07-24 08:07:39 INFO: total time: 0.07494521141052246s
+2025-07-24 08:08:13 INFO: Solving with cbc
+2025-07-24 08:08:13 INFO: Problem solved in 0.016142606735229492s.
+2025-07-24 08:08:13 INFO: resolving fixed-integer LP for duals
+2025-07-24 08:08:13 INFO: 
+2025-07-24 08:08:13 INFO: Solution information
+2025-07-24 08:08:13 INFO: ----------
+2025-07-24 08:08:13 INFO: 
+2025-07-24 08:08:13 INFO: Status
+2025-07-24 08:08:13 INFO:             g0  g1  g2  g3
+2025-07-24 08:08:13 INFO: time
+2025-07-24 08:08:13 INFO: 2025-07-24   1   1   1   1
+2025-07-24 08:08:13 INFO: Power
+2025-07-24 08:08:13 INFO:                g0    g1    g2     g3
+2025-07-24 08:08:13 INFO: time
+2025-07-24 08:08:13 INFO: 2025-07-24  300.0  80.0  70.0  100.0
+2025-07-24 08:08:13 INFO: IC
+2025-07-24 08:08:13 INFO:               g0    g1         g2   g3
+2025-07-24 08:08:13 INFO: time
+2025-07-24 08:08:13 INFO: 2025-07-24  18.0  17.5  18.333333  2.0
+2025-07-24 08:08:13 INFO: 
+2025-07-24 08:08:13 INFO: price=[18.333333]
+2025-07-24 08:08:13 INFO: load info:
+2025-07-24 08:08:13 INFO: name=['Industrial_Load', 'Residential_Load']
+2025-07-24 08:08:13 INFO: Pd=[300.0, 250.0]
+2025-07-24 08:08:13 INFO: 
+2025-07-24 08:08:13 INFO: objective cost=7433.3333
+2025-07-24 08:08:13 INFO: total cost of generation=7433.3333
+2025-07-24 08:08:13 INFO: linearized fuel cost of generation=7433.3333
+2025-07-24 08:08:13 INFO: polynomial fuel cost of generation=7433.333333333333
+2025-07-24 08:08:13 INFO: percentage difference		=0.00%
+2025-07-24 08:08:13 INFO: total time: 0.06598114967346191s
+2025-07-24 08:08:49 INFO: Solving with cbc
+2025-07-24 08:08:49 INFO: Problem solved in 0.0172884464263916s.
+2025-07-24 08:08:49 INFO: resolving fixed-integer LP for duals
+2025-07-24 08:08:49 INFO: 
+2025-07-24 08:08:49 INFO: Solution information
+2025-07-24 08:08:49 INFO: ----------
+2025-07-24 08:08:49 INFO: 
+2025-07-24 08:08:49 INFO: Status
+2025-07-24 08:08:49 INFO:             g0  g1  g2  g3
+2025-07-24 08:08:49 INFO: time
+2025-07-24 08:08:49 INFO: 2025-07-24   1   1   1   1
+2025-07-24 08:08:49 INFO: Power
+2025-07-24 08:08:49 INFO:                g0    g1    g2     g3
+2025-07-24 08:08:49 INFO: time
+2025-07-24 08:08:49 INFO: 2025-07-24  300.0  80.0  70.0  100.0
+2025-07-24 08:08:49 INFO: IC
+2025-07-24 08:08:49 INFO:               g0    g1         g2   g3
+2025-07-24 08:08:49 INFO: time
+2025-07-24 08:08:49 INFO: 2025-07-24  18.0  17.5  18.333333  2.0
+2025-07-24 08:08:49 INFO: 
+2025-07-24 08:08:49 INFO: price=[18.333333]
+2025-07-24 08:08:49 INFO: load info:
+2025-07-24 08:08:49 INFO: name=['Industrial_Load', 'Residential_Load']
+2025-07-24 08:08:49 INFO: Pd=[300.0, 250.0]
+2025-07-24 08:08:49 INFO: 
+2025-07-24 08:08:49 INFO: objective cost=7433.3333
+2025-07-24 08:08:49 INFO: total cost of generation=7433.3333
+2025-07-24 08:08:49 INFO: linearized fuel cost of generation=7433.3333
+2025-07-24 08:08:49 INFO: polynomial fuel cost of generation=7433.333333333333
+2025-07-24 08:08:49 INFO: percentage difference		=0.00%
+2025-07-24 08:08:49 INFO: total time: 0.06735515594482422s

@@ -1,4 +1,4 @@
-from minpower import solve, config
+from simpower import solve, config
 import sys
 
 

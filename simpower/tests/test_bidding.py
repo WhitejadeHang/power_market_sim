@@ -1,7 +1,7 @@
 """Test the constraint behavior of the bids"""
-from minpower.generators import Generator
-from minpower.optimization import value
-from minpower.bidding import parse_polynomial
+from simpower.generators import Generator
+from simpower.optimization import value
+from simpower.bidding import parse_polynomial
 from .test_utils import *
 
 

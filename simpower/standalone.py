@@ -19,7 +19,15 @@ from .config import user_config
 
 from .schedule import TimeIndex
 from .get_data import parse_standalone
-import pkg_resources
+try:
+    from importlib.metadata import version
+    def get_version(package_name):
+        return version(package_name)
+except ImportError:
+    # Fallback for older Python versions
+    import pkg_resources
+    def get_version(package_name):
+        return pkg_resources.get_distribution(package_name).version
 
 
 def wipe_storage():
@@ -101,7 +109,7 @@ def init_store(power_system, times, data):
 
     storage["version"] = Series(
         {
-            "minpower": pkg_resources.get_distribution("minpower").version,
+            "simpower": get_version("simpower"),
             # try storing version number of the current working directory
             "problem": _get_problem_version(),
         }

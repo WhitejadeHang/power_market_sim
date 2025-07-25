@@ -1,9 +1,10 @@
 import logging
-import nose
 import numpy as np
 import pandas as pd
-from minpower.tests.test_utils import istest
-from minpower.tests.test_integration import (
+
+# Use our nose compatibility layer
+from simpower.tests.test_utils import istest
+from simpower.tests.test_integration import (
     run_case,
     assert_series_equal,
     assert_frame_equal,
@@ -12,7 +13,8 @@ from minpower.tests.test_integration import (
 logging.basicConfig(level=logging.ERROR)
 
 
-raise nose.SkipTest("TODO: stochastic UC currently not working with new pyomo version")
+# Stochastic UC tests - re-enabled to test with updated pyomo version
+# If tests fail, they will be marked as failed rather than skipped
 
 mipgap = 0.0001
 
@@ -48,7 +50,8 @@ def standalone():
     try:
         import tables
     except ImportError:
-        raise nose.SkipTest("standalone mode requires pytables")
+        import pytest
+        pytest.skip("standalone mode requires pytables")
 
     slnA = run_case("stochastic_short_case", deterministic_solve=True)
     slnB = run_case("stochastic_short_case", deterministic_solve=True, standalone=True)

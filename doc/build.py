@@ -3,8 +3,8 @@ not sure this works anymore
 """
 import os, sys, shutil, glob
 
-build_dir = os.path.expanduser("~/Documents/code/minpower-doc/")
-project_dir = os.path.expanduser("~/Documents/code/minpower/")
+build_dir = os.path.expanduser("~/Documents/code/simpower-doc/")
+project_dir = os.path.expanduser("~/Documents/code/simpower/")
 
 
 def check_build():
@@ -29,7 +29,7 @@ def api():
     print("autogenerating API")
     os.system("rm {proj}/doc/source/api/*.rst".format(proj=project_dir))
     os.system(
-        "sphinx-apidoc {proj}/minpower -o {proj}/doc/source/api".format(
+        "sphinx-apidoc {proj}/simpower -o {proj}/doc/source/api".format(
             proj=project_dir
         )
     )

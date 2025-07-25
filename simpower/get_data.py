@@ -350,10 +350,10 @@ def build_class_list(data, model, times=None, timeseries=None):
             if scenariosdirectory:
                 try:
                     kwds["observed_values"] = timeseries[observed_name]
-                except:
+                except KeyError:
                     raise IOError(
-                        """you must provide an
-                        observed filename for a rolling stochastic UC"""
+                        f"""you must provide an observed filename '{observed_name}' 
+                        for a rolling stochastic UC"""
                     )
 
             # add a custom bid points file with {power, cost} columns

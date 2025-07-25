@@ -12,7 +12,7 @@ version_number = open("simpower/__init__.py").read().split('"')[1].rstrip('"')
 setup(
     name="simpower",
     version=version_number,
-    download_url="https://github.com/adamgreenhall/simpower"
+    download_url="https://github.com/WhitejadeHang/power_market_sim"
     + "/zipball/v{v}".format(v=version_number),
     entry_points="""
     [console_scripts]
@@ -26,10 +26,11 @@ setup(
         "simpower.tests": ["*.csv", "*/*.csv", "*/*/*.csv"],
     },
     install_requires=[
-        "pandas>=1.3",
-        "pyomo>=6.0",
-        "matplotlib>=3.4",
-        "xarray>=0.18",
+        "pandas>=1.3,<3.0",
+        "pyomo>=6.0,<7.0",
+        "matplotlib>=3.4,<4.0",
+        "xarray>=0.18,<3.0",
+        "numpy>=1.20,<2.0",
     ],
     tests_require=["nose", "coverage", "objgraph"],
     # it helps to have seed if you are going to make releases
@@ -37,7 +38,7 @@ setup(
     description="power systems optimization made beautiful",
     author="Adam Greenhall",
     author_email="simpower@adamgreenhall.com",
-    url="http://adamgreenhall.github.io/simpower",
+    url="https://github.com/WhitejadeHang/power_market_sim",
     packages=find_packages(),
     keywords=["power systems", "optimization"],
     classifiers=[
@@ -62,8 +63,8 @@ power systems tools made beautiful
 * Many solvers are supported.
 
 
-* `Full documentation and tutorials <http://adamgreenhall.github.io/simpower>`_
-* `Code base <http://github.com/adamgreenhall/simpower>`_
+* `Full documentation and tutorials <https://github.com/WhitejadeHang/power_market_sim>`_
+* `Code base <https://github.com/WhitejadeHang/power_market_sim>`_
 
 """,
 )

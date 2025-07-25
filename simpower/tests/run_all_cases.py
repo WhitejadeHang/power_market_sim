@@ -6,7 +6,7 @@ constraints are active, and vizualizations and solution
 output work.
 
 Chances are good that if you make major modifications 
-to the Minpower code you will break something here. 
+to the Simpower code you will break something here. 
 Just fix it before you push your change.
 """
 
@@ -15,9 +15,9 @@ import os
 import glob
 import traceback
 import logging
-from minpower import config
-from minpower.config import user_config
-from minpower.commonscripts import joindir, splitFilename
+from simpower import config
+from simpower.config import user_config
+from simpower.commonscripts import joindir, splitFilename
 
 
 def wipeTestSlate(dir):
@@ -33,7 +33,7 @@ def hasPyscript(dir):
 
 def main(solver=config.user_config.solver):
     logging.basicConfig(level=logging.CRITICAL, format="%(levelname)s: %(message)s")
-    from minpower import solve
+    from simpower import solve
 
     dirNm = splitFilename(__file__)[0]
     if dirNm == "":
