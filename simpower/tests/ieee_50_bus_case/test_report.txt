@@ -3,7 +3,7 @@ IEEE 50-Bus Economic Dispatch Test Report
 ========================================
 
 Test Information:
-- Test Date: 2025-07-24 14:09:58
+- Test Date: 2025-07-25 14:01:13
 - Case Directory: simpower/tests/ieee_50_bus_case
 - Test Script: test_ieee_50_bus_case.py
 
