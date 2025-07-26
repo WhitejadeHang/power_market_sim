@@ -1,0 +1,15 @@
+name,bus_type,real_power_demand,reactive_power_demand,voltage_magnitude_setpoint,base_kv
+Bus01,slack,0.0,0.0,1.06,69.0
+Bus02,PV,21.7,12.7,1.045,69.0
+Bus03,PV,94.2,19.0,1.045,69.0
+Bus04,PV,47.8,-3.9,1.045,69.0
+Bus05,PV,7.6,1.6,1.045,69.0
+Bus06,PQ,11.2,7.5,1.0,69.0
+Bus07,PQ,0.0,0.0,1.0,69.0
+Bus08,PQ,0.0,0.0,1.0,69.0
+Bus09,PQ,29.5,16.6,1.0,69.0
+Bus10,PQ,9.0,5.8,1.0,69.0
+Bus11,PQ,3.5,1.8,1.0,69.0
+Bus12,PQ,6.1,1.6,1.0,69.0
+Bus13,PQ,13.5,5.8,1.0,69.0
+Bus14,PQ,14.9,5.0,1.0,69.0

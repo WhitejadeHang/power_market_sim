@@ -1,0 +1,12 @@
+name,bus,schedule filename
+Load02,Bus02,timeseries.csv
+Load03,Bus03,timeseries.csv
+Load04,Bus04,timeseries.csv
+Load05,Bus05,timeseries.csv
+Load06,Bus06,timeseries.csv
+Load09,Bus09,timeseries.csv
+Load10,Bus10,timeseries.csv
+Load11,Bus11,timeseries.csv
+Load12,Bus12,timeseries.csv
+Load13,Bus13,timeseries.csv
+Load14,Bus14,timeseries.csv
