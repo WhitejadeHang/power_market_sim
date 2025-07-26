@@ -1,5 +1,5 @@
 """
-IEEE 14节点72时段（3天）分析模块
+IEEE 14节点多时段分析模块
 """
 
 import os
@@ -12,15 +12,16 @@ from datetime import datetime, timedelta
 from .ieee14_12periods_analysis import IEEE14Analysis
 
 
-class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
-    """IEEE 14节点72时段分析类"""
+class IEEE14MultiPeriodAnalysis(IEEE14Analysis):
+    """IEEE 14节点多时段分析类"""
     
     def __init__(self, case_dir, solution):
         # 先设置基本属性
         self.case_dir = case_dir
         self.solution = solution
-        self.periods = 72
-        self.days = 3
+        
+        # 自动检测时段数
+        self.detect_periods()
         
         # 加载案例数据
         self.load_case_data()
@@ -34,6 +35,22 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
         if not os.path.exists(self.results_dir):
             os.makedirs(self.results_dir)
             
+    def detect_periods(self):
+        """自动检测仿真时段数"""
+        # 尝试从solution获取时段数
+        if hasattr(self.solution, 'generators_power'):
+            self.periods = len(self.solution.generators_power)
+        elif hasattr(self.solution, 'times'):
+            self.periods = len(self.solution.times)
+        else:
+            # 默认值
+            self.periods = 72
+            
+        # 计算天数（假设每天24时段）
+        self.days = self.periods // 24
+        if self.periods % 24 != 0:
+            self.days += 1
+        
     def get_generator_data(self, data_type='power'):
         """获取发电机数据，兼容多阶段解"""
         try:
@@ -48,8 +65,8 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
             return None
         
     def create_load_curve(self):
-        """生成3天的负荷曲线"""
-        print("\n📈 生成3天负荷曲线...")
+        """生成多天的负荷曲线"""
+        print(f"\n📈 生成{self.days}天负荷曲线...")
         
         # 获取总负荷数据
         total_loads = []
@@ -81,21 +98,23 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
         # 标记每天的峰值
         for day in range(self.days):
             day_start = day * 24
-            day_end = (day + 1) * 24
-            day_loads = total_loads[day_start:day_end]
-            day_times = times[day_start:day_end]
-            
-            peak_idx = np.argmax(day_loads)
-            peak_load = day_loads[peak_idx]
-            peak_time = day_times[peak_idx]
-            
-            ax.plot(peak_time, peak_load, 'ro', markersize=8)
-            ax.annotate(f'Day{day+1}峰值\\n{peak_load:.1f}MW', 
-                       xy=(peak_time, peak_load), 
-                       xytext=(10, 10), 
-                       textcoords='offset points',
-                       fontproperties=self.chinese_font,
-                       bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7))
+            day_end = min((day + 1) * 24, self.periods)
+            if day_start < self.periods:
+                day_loads = total_loads[day_start:day_end]
+                day_times = times[day_start:day_end]
+                
+                if day_loads:
+                    peak_idx = np.argmax(day_loads)
+                    peak_load = day_loads[peak_idx]
+                    peak_time = day_times[peak_idx]
+                    
+                    ax.plot(peak_time, peak_load, 'ro', markersize=8)
+                    ax.annotate(f'Day{day+1}峰值\\n{peak_load:.1f}MW', 
+                               xy=(peak_time, peak_load), 
+                               xytext=(10, 10), 
+                               textcoords='offset points',
+                               fontproperties=self.chinese_font,
+                               bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7))
         
         # 设置x轴日期格式
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m/%d %H:00'))
@@ -104,28 +123,30 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
         
         ax.set_xlabel('时间', fontproperties=self.chinese_font)
         ax.set_ylabel('负荷 (MW)', fontproperties=self.chinese_font)
-        ax.set_title('72时段（3天）系统负荷曲线', fontproperties=self.chinese_font, fontsize=14)
+        ax.set_title(f'{self.periods}时段（{self.days}天）系统负荷曲线', 
+                    fontproperties=self.chinese_font, fontsize=14)
         ax.grid(True, alpha=0.3)
         ax.legend(prop=self.chinese_font)
         
         # 添加日分隔线
         for day in range(1, self.days):
             day_time = start_time + timedelta(days=day)
-            ax.axvline(x=day_time, color='gray', linestyle='--', alpha=0.5)
-            ax.text(day_time, ax.get_ylim()[1], f'Day {day+1}', 
-                   ha='center', va='bottom', fontproperties=self.chinese_font)
+            if day_time < times[-1]:
+                ax.axvline(x=day_time, color='gray', linestyle='--', alpha=0.5)
+                ax.text(day_time, ax.get_ylim()[1], f'Day {day+1}', 
+                       ha='center', va='bottom', fontproperties=self.chinese_font)
         
         plt.tight_layout()
         
-        output_path = os.path.join(self.results_dir, 'load_curve_3days.png')
+        output_path = os.path.join(self.results_dir, f'load_curve_{self.days}days.png')
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         plt.close()
         
         print(f"✅ 保存到: {output_path}")
         
     def create_unit_commitment(self):
-        """生成72时段机组组合状态图"""
-        print("\n⚡ 生成72时段机组组合图...")
+        """生成多时段机组组合状态图"""
+        print(f"\n⚡ 生成{self.periods}时段机组组合图...")
         
         try:
             # 获取机组状态数据
@@ -134,8 +155,14 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
                 print("❌ 无机组状态数据")
                 return
                 
-            # 创建3个子图，每个代表一天
-            fig, axes = plt.subplots(3, 1, figsize=(14, 12), sharex=True)
+            # 创建子图，每个代表一天
+            if self.days > 1:
+                fig, axes = plt.subplots(self.days, 1, figsize=(14, 4*self.days), sharex=True)
+                if self.days == 1:
+                    axes = [axes]
+            else:
+                fig, ax = plt.subplots(figsize=(14, 6))
+                axes = [ax]
             
             gen_names = [f'G{i+1}' for i in range(len(self.generators_df))]
             
@@ -144,38 +171,41 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
                 
                 # 获取该天的数据
                 day_start = day * 24
-                day_end = (day + 1) * 24
-                day_status = status_df.iloc[day_start:day_end].values.T
+                day_end = min((day + 1) * 24, self.periods)
                 
-                # 绘制热力图
-                im = ax.imshow(day_status, aspect='auto', cmap='RdYlGn', 
-                             interpolation='nearest', vmin=0, vmax=1)
+                if day_start < self.periods:
+                    day_status = status_df.iloc[day_start:day_end].values.T
+                    hours_in_day = day_end - day_start
                 
-                # 设置坐标轴
-                ax.set_yticks(range(len(gen_names)))
-                ax.set_yticklabels(gen_names)
-                ax.set_xticks(range(24))
-                ax.set_xticklabels([f'{h}:00' for h in range(24)])
+                    # 绘制热力图
+                    im = ax.imshow(day_status, aspect='auto', cmap='RdYlGn', 
+                                 interpolation='nearest', vmin=0, vmax=1)
+                    
+                    # 设置坐标轴
+                    ax.set_yticks(range(len(gen_names)))
+                    ax.set_yticklabels(gen_names)
+                    ax.set_xticks(range(hours_in_day))
+                    ax.set_xticklabels([f'{h}:00' for h in range(hours_in_day)])
+                    
+                    # 添加网格
+                    ax.set_xticks(np.arange(hours_in_day+1)-0.5, minor=True)
+                    ax.set_yticks(np.arange(len(gen_names)+1)-0.5, minor=True)
+                    ax.grid(which='minor', color='gray', linestyle='-', linewidth=0.5)
+                    
+                    ax.set_ylabel(f'Day {day+1}', fontproperties=self.chinese_font, fontsize=12)
+                    
+                    # 添加启停次数统计
+                    starts = 0
+                    for gen_idx in range(len(gen_names)):
+                        gen_status = day_status[gen_idx]
+                        starts += np.sum(np.diff(np.concatenate([[0], gen_status])) > 0)
+                    
+                    ax.text(1.01, 0.5, f'启动次数: {starts}', 
+                           transform=ax.transAxes, va='center',
+                           fontproperties=self.chinese_font)
                 
-                # 添加网格
-                ax.set_xticks(np.arange(25)-0.5, minor=True)
-                ax.set_yticks(np.arange(len(gen_names)+1)-0.5, minor=True)
-                ax.grid(which='minor', color='gray', linestyle='-', linewidth=0.5)
-                
-                ax.set_ylabel(f'Day {day+1}', fontproperties=self.chinese_font, fontsize=12)
-                
-                # 添加启停次数统计
-                starts = 0
-                for gen_idx in range(len(gen_names)):
-                    gen_status = day_status[gen_idx]
-                    starts += np.sum(np.diff(np.concatenate([[0], gen_status])) > 0)
-                
-                ax.text(1.01, 0.5, f'启动次数: {starts}', 
-                       transform=ax.transAxes, va='center',
-                       fontproperties=self.chinese_font)
-            
             axes[-1].set_xlabel('时间 (小时)', fontproperties=self.chinese_font)
-            fig.suptitle('72时段（3天）煤电机组组合状态', 
+            fig.suptitle(f'{self.periods}时段（{self.days}天）煤电机组组合状态', 
                         fontproperties=self.chinese_font, fontsize=16)
             
             # 添加颜色条
@@ -184,7 +214,7 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
             
             plt.tight_layout()
             
-            output_path = os.path.join(self.results_dir, 'unit_commitment_3days.png')
+            output_path = os.path.join(self.results_dir, f'unit_commitment_{self.days}days.png')
             plt.savefig(output_path, dpi=300, bbox_inches='tight')
             plt.close()
             
@@ -279,7 +309,7 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
             
             ax.set_xlabel('时间 (小时)', fontproperties=self.chinese_font)
             ax.set_ylabel('发电量 (MW)', fontproperties=self.chinese_font)
-            ax.set_title('72时段机组出力堆叠图', fontproperties=self.chinese_font, fontsize=14)
+            ax.set_title(f'{self.periods}时段机组出力堆叠图', fontproperties=self.chinese_font, fontsize=14)
             ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1))
             ax.grid(True, alpha=0.3)
             
@@ -318,7 +348,7 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
                 
                 ax.set_xlabel('时间 (小时)', fontproperties=self.chinese_font)
                 ax.set_ylabel('节点电价 ($/MWh)', fontproperties=self.chinese_font)
-                ax.set_title('72时段系统平均节点电价', fontproperties=self.chinese_font, fontsize=14)
+                ax.set_title(f'{self.periods}时段系统平均节点电价', fontproperties=self.chinese_font, fontsize=14)
                 ax.grid(True, alpha=0.3)
                 ax.legend(prop=self.chinese_font)
                 
@@ -433,13 +463,13 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
             print(f"❌ 边际机组分析失败: {str(e)}")
             
     def generate_full_report(self):
-        """生成完整的72时段报告"""
-        print("\n🔍 开始生成IEEE 14节点72时段（3天）完整分析报告...")
+        """生成完整的多时段报告"""
+        print(f"\n🔍 开始生成IEEE 14节点{self.periods}时段（{self.days}天）完整分析报告...")
         
         # 1. 网络拓扑图
         self.create_network_topology()
         
-        # 2. 3天负荷曲线
+        # 2. 多天负荷曲线
         self.create_load_curve()
         
         # 3. 机组组合状态
@@ -460,5 +490,5 @@ class IEEE14_72PeriodsAnalysis(IEEE14Analysis):
         # 8. 煤电机组性能分析
         self.analyze_coal_performance()
         
-        print("\n✅ 72时段分析报告生成完成！")
+        print(f"\n✅ {self.periods}时段分析报告生成完成！")
         print(f"📁 所有结果保存在: {self.results_dir}")

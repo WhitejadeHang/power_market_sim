@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-运行IEEE 14节点72时段（3天）煤电机组仿真
+运行IEEE 14节点24时段（1天）煤电机组仿真
 """
 
 import os
@@ -14,18 +14,18 @@ from simpower.ieee14_72periods_analysis import IEEE14MultiPeriodAnalysis
 
 
 def run_simulation():
-    """运行72时段仿真"""
+    """运行24时段仿真"""
     
-    case_dir = 'simpower/tests/ieee14_72periods_coal'
+    case_dir = 'simpower/tests/ieee14_24periods_coal'
     
-    print("🚀 IEEE 14节点72时段（3天）煤电机组仿真")
+    print("🚀 IEEE 14节点24时段（1天）煤电机组仿真")
     print("=" * 60)
-    print("📅 仿真周期: 3天，每天24时段，共72时段")
+    print("📅 仿真周期: 1天，24时段")
     print("⚡ 发电机组: 7台煤电机组")
     print("=" * 60)
     
     # 运行求解
-    print("\n⚙️ 开始72时段机组组合优化求解...")
+    print("\n⚙️ 开始24时段机组组合优化求解...")
     start_time = time.time()
     
     try:
@@ -39,7 +39,7 @@ def run_simulation():
             return False
         
         # 生成分析报告
-        print("\n📊 生成72时段完整分析报告...")
+        print("\n📊 生成24时段完整分析报告...")
         analyzer = IEEE14MultiPeriodAnalysis(case_dir, solution)
         analyzer.generate_full_report()
         

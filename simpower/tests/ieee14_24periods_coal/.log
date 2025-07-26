@@ -278,3 +278,8 @@
 2025-07-26 14:53:40 CRITICAL: stage infeasible, re-run with shedding.
 2025-07-26 14:53:40 INFO: Solving with cbc
 2025-07-26 14:53:40 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:54:33 INFO: Solving with cbc
+2025-07-26 14:54:33 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:54:33 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:54:33 INFO: Solving with cbc
+2025-07-26 14:54:33 CRITICAL: problem not solved - solver terminated with status: "infeasible"
