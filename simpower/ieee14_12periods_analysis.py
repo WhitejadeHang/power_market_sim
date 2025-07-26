@@ -433,8 +433,67 @@ class IEEE14Analysis:
         # 5. 节点电价
         self.create_nodal_prices()
         
-        # 6. 费用分析
+        # 6. 计算总费用
         self.calculate_total_costs()
         
-        print(f"\n✅ 分析报告生成完成！")
+        # 7. 边际机组分析
+        self.analyze_marginal_units()
+        
+        print("\n✅ 分析报告生成完成！")
         print(f"📁 所有结果保存在: {self.results_dir}")
+        
+    def analyze_marginal_units(self):
+        """分析各时段的边际机组和边际价格"""
+        print("\n📊 边际机组分析...")
+        
+        try:
+            # 获取出力数据
+            power_df = self.solution.gen_time_df('power')
+            
+            # 获取各时段的边际价格（假设所有节点价格相同）
+            marginal_prices = []
+            marginal_units = []
+            
+            for t_idx, (t_str, lmp_list) in enumerate(self.solution.lmps.items()):
+                # 取第一个节点的价格作为系统边际价格
+                marginal_price = lmp_list[0]
+                marginal_prices.append(marginal_price)
+                
+                # 找出边际机组（出力在最小和最大之间的机组）
+                marginal_unit = None
+                for gen_idx, gen in self.generators_df.iterrows():
+                    gen_name = gen['name']
+                    gen_col = f'g{gen_idx}'
+                    if gen_col in power_df.columns:
+                        power = power_df.iloc[t_idx][gen_col]
+                        pmin = gen['P min']
+                        pmax = gen['P max']
+                        
+                        # 如果出力在最小和最大之间，可能是边际机组
+                        if pmin < power < pmax - 0.1:  # 留一点容差
+                            marginal_unit = gen_name
+                            break
+                
+                marginal_units.append(marginal_unit or 'Unknown')
+            
+            # 创建边际分析报告
+            marginal_report = pd.DataFrame({
+                '时段': [f't{i:02d}' for i in range(len(marginal_prices))],
+                '边际价格($/MWh)': marginal_prices,
+                '边际机组': marginal_units
+            })
+            
+            # 保存边际分析报告
+            output_path = os.path.join(self.results_dir, 'marginal_analysis.csv')
+            marginal_report.to_csv(output_path, index=False, encoding='utf-8')
+            
+            print(f"✅ 边际机组分析保存到: {output_path}")
+            
+            # 打印摘要
+            print("\n边际价格范围:")
+            print(f"  最低: ${min(marginal_prices):.2f}/MWh")
+            print(f"  最高: ${max(marginal_prices):.2f}/MWh")
+            print(f"  平均: ${sum(marginal_prices)/len(marginal_prices):.2f}/MWh")
+            
+        except Exception as e:
+            print(f"❌ 边际机组分析失败: {str(e)}")
