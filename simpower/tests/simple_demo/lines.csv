@@ -1,0 +1,4 @@
+name,frombus,tobus,reactance,pmax
+Line1,Bus1,Bus2,0.1,100
+Line2,Bus1,Bus3,0.15,100
+Line3,Bus2,Bus3,0.12,100

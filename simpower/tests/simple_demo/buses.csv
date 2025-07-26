@@ -1,0 +1,4 @@
+name,bus_type,real_power_demand,reactive_power_demand
+Bus1,slack,0,0
+Bus2,PV,50,10
+Bus3,PQ,100,20

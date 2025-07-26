@@ -1,0 +1,3 @@
+name,bus,schedule filename
+Load2,Bus2,timeseries.csv
+Load3,Bus3,timeseries.csv
