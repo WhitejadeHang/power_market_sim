@@ -277,8 +277,8 @@ class PowerSystem(OptimizationProblem):
     Power systems object which is the container for all other components.
 
     :param generators: list of :class:`~powersystem.Generator` objects
-    :param loads: list of :class:`~powersystem.Load` objects
-    :param lines: list of :class:`~powersystem.Line` objects
+    :param loads: list of :class:`~powersystems.Load` objects
+    :param lines: list of :class:`~powersystems.Line` objects
 
     Other settings are inherited from `user_config`.
     """
@@ -295,7 +295,7 @@ class PowerSystem(OptimizationProblem):
         if lines is None:  # pragma: no cover
             lines = []
 
-        buses = self.make_buses_list(loads, generators)
+        buses = self.make_buses_list(loads, generators, lines)
         self.create_admittance_matrix(buses, lines)
         self.init_optimization()
 
@@ -305,7 +305,7 @@ class PowerSystem(OptimizationProblem):
         self.is_stochastic = len([gen for gen in generators if gen.is_stochastic]) > 0
         self.shedding_mode = False
 
-    def make_buses_list(self, loads, generators):
+    def make_buses_list(self, loads, generators, lines=None):
         """
         Create list of :class:`powersystems.Bus` objects
         from the load and generator bus names. Otherwise
@@ -319,6 +319,12 @@ class PowerSystem(OptimizationProblem):
         busNameL = []
         busNameL.extend(getattrL(generators, "bus"))
         busNameL.extend(getattrL(loads, "bus"))
+        
+        # 添加lines中引用的所有节点
+        if lines:
+            busNameL.extend(getattrL(lines, "frombus"))
+            busNameL.extend(getattrL(lines, "tobus"))
+        
         # 修复pandas兼容性警告
         if len(busNameL) > 0:
             # 转换为numpy数组再使用pd.unique
