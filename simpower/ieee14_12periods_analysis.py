@@ -351,6 +351,25 @@ class IEEE14Analysis:
                 }
             }
             
+            # 添加容量段报价信息
+            if 'costcurvepointsfilename' in self.generators_df.columns:
+                bid_info = {}
+                for _, gen in self.generators_df.iterrows():
+                    gen_name = gen['name']
+                    bid_file = gen['costcurvepointsfilename']
+                    try:
+                        bid_df = pd.read_csv(os.path.join(self.case_dir, bid_file))
+                        bid_info[gen_name] = {
+                            '容量段数': len(bid_df) - 1,
+                            '最低报价($/MWh)': f"{(bid_df['cost'].iloc[1] - bid_df['cost'].iloc[0]) / (bid_df['power'].iloc[1] - bid_df['power'].iloc[0]):.2f}",
+                            '最高报价($/MWh)': f"{(bid_df['cost'].iloc[-1] - bid_df['cost'].iloc[-2]) / (bid_df['power'].iloc[-1] - bid_df['power'].iloc[-2]):.2f}"
+                        }
+                    except:
+                        pass
+                
+                if bid_info:
+                    cost_report['容量段报价信息'] = bid_info
+            
             output_path = os.path.join(self.results_dir, 'cost_report.json')
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(cost_report, f, ensure_ascii=False, indent=2)

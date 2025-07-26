@@ -121,3 +121,55 @@
 2025-07-26 08:53:50 INFO: polynomial fuel cost of generation=8710.413950999999
 2025-07-26 08:53:50 INFO: percentage difference		=0.03%
 2025-07-26 08:53:50 INFO: total time: 0.7911856174468994s
+2025-07-26 09:16:28 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:16:28 INFO: Solving with cbc
+2025-07-26 09:16:28 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 09:16:28 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 09:16:28 INFO: Solving with cbc
+2025-07-26 09:16:29 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 09:16:59 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:00 INFO: Solving with cbc
+2025-07-26 09:17:00 INFO: Problem solved in 0.07553625106811523s.
+2025-07-26 09:17:00 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:00 INFO: 
+2025-07-26 09:17:00 INFO: Solution information
+2025-07-26 09:17:00 INFO: ----------
+2025-07-26 09:17:00 INFO: 
+2025-07-26 09:17:00 INFO: objective cost=8827.52
+2025-07-26 09:17:00 INFO: total cost of generation=8827.52
+2025-07-26 09:17:00 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:00 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:00 INFO: percentage difference		=0.00%
+2025-07-26 09:17:00 INFO: total time: 0.2620058059692383s
+2025-07-26 09:17:21 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:21 INFO: Solving with cbc
+2025-07-26 09:17:21 INFO: Problem solved in 0.0961599349975586s.
+2025-07-26 09:17:21 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:21 INFO: 
+2025-07-26 09:17:21 INFO: Solution information
+2025-07-26 09:17:21 INFO: ----------
+2025-07-26 09:17:21 INFO: 
+2025-07-26 09:17:21 INFO: objective cost=8827.52
+2025-07-26 09:17:21 INFO: total cost of generation=8827.52
+2025-07-26 09:17:21 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:21 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:21 INFO: percentage difference		=0.00%
+2025-07-26 09:17:21 INFO: total time: 0.2700369358062744s
+2025-07-26 09:17:49 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:49 INFO: Solving with cbc
+2025-07-26 09:17:49 INFO: Problem solved in 0.07087373733520508s.
+2025-07-26 09:17:49 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:49 INFO: 
+2025-07-26 09:17:49 INFO: Solution information
+2025-07-26 09:17:49 INFO: ----------
+2025-07-26 09:17:49 INFO: 
+2025-07-26 09:17:49 INFO: objective cost=8827.52
+2025-07-26 09:17:49 INFO: total cost of generation=8827.52
+2025-07-26 09:17:49 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:49 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:49 INFO: percentage difference		=0.00%
+2025-07-26 09:17:49 INFO: total time: 0.24469399452209473s
