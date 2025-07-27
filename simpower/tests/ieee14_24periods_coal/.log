@@ -463,3 +463,29 @@
 2025-07-27 02:46:41 CRITICAL: stage infeasible, re-run with shedding.
 2025-07-27 02:46:41 INFO: Solving with cbc
 2025-07-27 02:46:41 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 03:07:45 INFO: Solving with cbc
+2025-07-27 03:07:45 INFO: Problem solved in 0.1506974697113037s.
+2025-07-27 03:07:45 INFO: resolving fixed-integer LP for duals
+2025-07-27 03:07:45 INFO: 
+2025-07-27 03:07:45 INFO: Solution information
+2025-07-27 03:07:45 INFO: ----------
+2025-07-27 03:07:45 INFO: 
+2025-07-27 03:07:45 INFO: objective cost=562282.95
+2025-07-27 03:07:45 INFO: total cost of generation=562282.951
+2025-07-27 03:07:45 INFO: linearized fuel cost of generation=562282.951
+2025-07-27 03:07:45 INFO: polynomial fuel cost of generation=562282.9525
+2025-07-27 03:07:45 INFO: percentage difference		=0.00%
+2025-07-27 03:07:45 INFO: total time: 0.48935651779174805s
+2025-07-27 03:07:54 INFO: Solving with cbc
+2025-07-27 03:07:54 INFO: Problem solved in 0.14918875694274902s.
+2025-07-27 03:07:54 INFO: resolving fixed-integer LP for duals
+2025-07-27 03:07:54 INFO: 
+2025-07-27 03:07:54 INFO: Solution information
+2025-07-27 03:07:54 INFO: ----------
+2025-07-27 03:07:54 INFO: 
+2025-07-27 03:07:54 INFO: objective cost=562282.95
+2025-07-27 03:07:54 INFO: total cost of generation=562282.951
+2025-07-27 03:07:54 INFO: linearized fuel cost of generation=562282.951
+2025-07-27 03:07:54 INFO: polynomial fuel cost of generation=562282.9525
+2025-07-27 03:07:54 INFO: percentage difference		=0.00%
+2025-07-27 03:07:54 INFO: total time: 0.4620511531829834s
