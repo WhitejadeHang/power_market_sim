@@ -1,5 +1,58 @@
 ----
 
+Version 5.0.0, Mon 27 Jan 2025
+================================
+
+Major Version Release: Simpower Advanced Multi-Period Optimization
+
+🚀 Major Features Added:
+
+ffd9cbe548	Design preset-based unit commitment case with large generators (Cursor Agent)
+715d798e12	Design 5-day 120-period coal case with unit commitment (Cursor Agent)
+f36c0a0b23	Successfully optimize 9-unit 24-period system design (Cursor Agent)
+1aa6fdcf45	Debug minuptime/mindowntime constraints (Cursor Agent)
+59f96c3e67	Fix Pmin initialization and update case design (Cursor Agent)
+99d610c890	Debug optimization infeasibility step by step (Cursor Agent)
+6ec5dc0ab1	Add 2 coal units and attempt to enable unit commitment (Cursor Agent)
+
+🎯 Core Improvements:
+- Large-scale unit commitment case design (300-1000MW generators)
+- 120-period (5-day) multi-period optimization support
+- Preset-based unit commitment methodology for feasible solutions
+- IEEE 14-bus comprehensive case library (24/72/120 periods)
+- Enhanced visualization with Chinese font support
+- Advanced result analysis and reporting framework
+
+🔧 Technical Enhancements:
+- Generator modeling for ultra-large units (1000MW class)
+- Improved minimum up/down time constraint handling
+- Load pattern design based on generator capabilities  
+- Comprehensive cost and performance analysis
+- Network topology visualization
+- Multi-day load curve and unit commitment plots
+
+📊 New Test Cases:
+- ieee14_120periods_preset: 5-day preset schedule validation
+- ieee14_120periods_coal: 5-day coal unit optimization
+- ieee14_72periods_coal: 3-day coal unit case
+- ieee14_24periods_balanced: 24-hour balanced dispatch
+
+🎨 Visualization Improvements:
+- Unit commitment Gantt charts
+- Generation dispatch stacked plots
+- Nodal price heatmaps
+- Cost breakdown pie charts
+- Network topology diagrams
+- Multi-perspective time series plots (1-day/3-day/5-day views)
+
+📈 Performance Optimizations:
+- Efficient handling of large-scale multi-period problems
+- Memory usage optimization for 120-period cases
+- Improved solver interface for better stability
+- Enhanced result processing and export capabilities
+
+----
+
 Version 4.3.10, Fri 12 Apr 2013
 ================================
 

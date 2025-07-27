@@ -280,14 +280,71 @@ print(f"求解时间: {power_system.solution_time:.2f}秒")
    - 阅读测试用例：`simpower/tests/` 目录
    - 研究源代码：理解实现细节
 
+## 🚀 高级功能 (v5.0新增)
+
+### 大规模多时段优化
+
+#### 120时段机组组合案例
+```python
+# 运行IEEE 14节点120时段案例
+import os
+os.chdir('simpower/tests')
+exec(open('run_ieee14_120periods_preset.py').read())
+
+# 特点：
+# - 5天120时段连续优化
+# - 大型机组建模 (300-1000MW)
+# - 预设调度验证方法
+# - 完整的可视化分析
+```
+
+#### 预设机组组合方法
+```python
+# 创建预设调度案例
+exec(open('create_preset_uc_case.py').read())
+
+# 解决问题：
+# - 多时段UC优化可行性
+# - 大规模问题求解稳定性
+# - 最小启停时间约束处理
+```
+
+### 增强可视化分析
+
+新版本提供10+种专业图表：
+- 机组组合甘特图
+- 多日负荷曲线对比
+- 节点电价热力图  
+- 成本结构分析
+- 网络拓扑可视化
+- 发电机利用率分析
+
+### 案例库扩展
+
+```bash
+# 完整的IEEE 14节点案例系列
+simpower/tests/ieee14_24periods_balanced/    # 24时段平衡调度
+simpower/tests/ieee14_72periods_coal/        # 72时段燃煤案例
+simpower/tests/ieee14_120periods_coal/       # 120时段燃煤案例
+simpower/tests/ieee14_120periods_preset/     # 120时段预设调度
+```
+
 ### 下一步
 - 尝试修改机组参数，观察对电价的影响
 - 添加可再生能源，分析对系统的影响
 - 实现多区域电力系统建模
 - 考虑输电约束和网络潮流
+- **探索120时段长周期优化** 🆕
+- **分析大型机组调度策略** 🆕
+- **使用预设方法验证复杂调度** 🆕
 
 ---
 
 **开始您的电力系统优化之旅吧！** 🌟
+
+📖 更多资源：
+- [最新更新总结](LATEST_UPDATES_SUMMARY.md)
+- [项目状态报告](PROJECT_STATUS.md)
+- [全面测试报告](COMPREHENSIVE_TEST_REPORT.md)
 
 有问题请访问：https://github.com/WhitejadeHang/power_market_sim/issues
