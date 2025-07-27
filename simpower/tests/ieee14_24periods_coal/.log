@@ -1,0 +1,491 @@
+2025-07-26 08:44:30 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:46:55 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:47:57 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:47:57 INFO: Solving with cbc
+2025-07-26 08:47:57 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 08:47:57 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 08:47:57 INFO: Solving with cbc
+2025-07-26 08:47:57 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 08:48:54 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:48:54 INFO: Solving with cbc
+2025-07-26 08:48:54 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 08:48:54 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 08:48:54 INFO: Solving with cbc
+2025-07-26 08:48:54 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 08:50:27 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:50:28 INFO: Solving with cbc
+2025-07-26 08:50:28 INFO: Problem solved in 0.6374979019165039s.
+2025-07-26 08:50:28 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:50:28 INFO: 
+2025-07-26 08:50:28 INFO: Solution information
+2025-07-26 08:50:28 INFO: ----------
+2025-07-26 08:50:28 INFO: 
+2025-07-26 08:50:28 INFO: objective cost=10112.756
+2025-07-26 08:50:28 INFO: total cost of generation=10112.756
+2025-07-26 08:50:28 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:50:28 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:50:28 INFO: percentage difference		=0.03%
+2025-07-26 08:50:28 INFO: total time: 0.7849328517913818s
+2025-07-26 08:50:44 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:50:44 INFO: Solving with cbc
+2025-07-26 08:50:45 INFO: Problem solved in 0.630739688873291s.
+2025-07-26 08:50:45 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:50:45 INFO: 
+2025-07-26 08:50:45 INFO: Solution information
+2025-07-26 08:50:45 INFO: ----------
+2025-07-26 08:50:45 INFO: 
+2025-07-26 08:50:45 INFO: objective cost=10112.756
+2025-07-26 08:50:45 INFO: total cost of generation=10112.756
+2025-07-26 08:50:45 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:50:45 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:50:45 INFO: percentage difference		=0.03%
+2025-07-26 08:50:45 INFO: total time: 0.7772018909454346s
+2025-07-26 08:52:31 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:52:31 INFO: Solving with cbc
+2025-07-26 08:52:32 INFO: Problem solved in 0.6298017501831055s.
+2025-07-26 08:52:32 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:52:32 INFO: 
+2025-07-26 08:52:32 INFO: Solution information
+2025-07-26 08:52:32 INFO: ----------
+2025-07-26 08:52:32 INFO: 
+2025-07-26 08:52:32 INFO: objective cost=10112.756
+2025-07-26 08:52:32 INFO: total cost of generation=10112.756
+2025-07-26 08:52:32 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:52:32 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:52:32 INFO: percentage difference		=0.03%
+2025-07-26 08:52:32 INFO: total time: 0.7787551879882812s
+2025-07-26 08:52:47 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:52:47 INFO: Solving with cbc
+2025-07-26 08:52:48 INFO: Problem solved in 0.6380109786987305s.
+2025-07-26 08:52:48 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:52:48 INFO: 
+2025-07-26 08:52:48 INFO: Solution information
+2025-07-26 08:52:48 INFO: ----------
+2025-07-26 08:52:48 INFO: 
+2025-07-26 08:52:48 INFO: objective cost=10112.756
+2025-07-26 08:52:48 INFO: total cost of generation=10112.756
+2025-07-26 08:52:48 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:52:48 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:52:48 INFO: percentage difference		=0.03%
+2025-07-26 08:52:48 INFO: total time: 0.8119814395904541s
+2025-07-26 08:53:16 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:53:16 INFO: Solving with cbc
+2025-07-26 08:53:17 INFO: Problem solved in 0.6348147392272949s.
+2025-07-26 08:53:17 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:53:17 INFO: 
+2025-07-26 08:53:17 INFO: Solution information
+2025-07-26 08:53:17 INFO: ----------
+2025-07-26 08:53:17 INFO: 
+2025-07-26 08:53:17 INFO: objective cost=10112.756
+2025-07-26 08:53:17 INFO: total cost of generation=10112.756
+2025-07-26 08:53:17 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:53:17 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:53:17 INFO: percentage difference		=0.03%
+2025-07-26 08:53:17 INFO: total time: 0.7822611331939697s
+2025-07-26 08:53:28 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:53:28 INFO: Solving with cbc
+2025-07-26 08:53:29 INFO: Problem solved in 0.6472611427307129s.
+2025-07-26 08:53:29 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:53:29 INFO: 
+2025-07-26 08:53:29 INFO: Solution information
+2025-07-26 08:53:29 INFO: ----------
+2025-07-26 08:53:29 INFO: 
+2025-07-26 08:53:29 INFO: objective cost=10112.756
+2025-07-26 08:53:29 INFO: total cost of generation=10112.756
+2025-07-26 08:53:29 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:53:29 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:53:29 INFO: percentage difference		=0.03%
+2025-07-26 08:53:29 INFO: total time: 0.8201713562011719s
+2025-07-26 08:53:49 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 08:53:50 INFO: Solving with cbc
+2025-07-26 08:53:50 INFO: Problem solved in 0.6445198059082031s.
+2025-07-26 08:53:50 INFO: resolving fixed-integer LP for duals
+2025-07-26 08:53:50 INFO: 
+2025-07-26 08:53:50 INFO: Solution information
+2025-07-26 08:53:50 INFO: ----------
+2025-07-26 08:53:50 INFO: 
+2025-07-26 08:53:50 INFO: objective cost=10112.756
+2025-07-26 08:53:50 INFO: total cost of generation=10112.756
+2025-07-26 08:53:50 INFO: linearized fuel cost of generation=8712.756
+2025-07-26 08:53:50 INFO: polynomial fuel cost of generation=8710.413950999999
+2025-07-26 08:53:50 INFO: percentage difference		=0.03%
+2025-07-26 08:53:50 INFO: total time: 0.7911856174468994s
+2025-07-26 09:16:28 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:16:28 INFO: Solving with cbc
+2025-07-26 09:16:28 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 09:16:28 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 09:16:28 INFO: Solving with cbc
+2025-07-26 09:16:29 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 09:16:59 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:00 INFO: Solving with cbc
+2025-07-26 09:17:00 INFO: Problem solved in 0.07553625106811523s.
+2025-07-26 09:17:00 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:00 INFO: 
+2025-07-26 09:17:00 INFO: Solution information
+2025-07-26 09:17:00 INFO: ----------
+2025-07-26 09:17:00 INFO: 
+2025-07-26 09:17:00 INFO: objective cost=8827.52
+2025-07-26 09:17:00 INFO: total cost of generation=8827.52
+2025-07-26 09:17:00 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:00 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:00 INFO: percentage difference		=0.00%
+2025-07-26 09:17:00 INFO: total time: 0.2620058059692383s
+2025-07-26 09:17:21 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:21 INFO: Solving with cbc
+2025-07-26 09:17:21 INFO: Problem solved in 0.0961599349975586s.
+2025-07-26 09:17:21 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:21 INFO: 
+2025-07-26 09:17:21 INFO: Solution information
+2025-07-26 09:17:21 INFO: ----------
+2025-07-26 09:17:21 INFO: 
+2025-07-26 09:17:21 INFO: objective cost=8827.52
+2025-07-26 09:17:21 INFO: total cost of generation=8827.52
+2025-07-26 09:17:21 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:21 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:21 INFO: percentage difference		=0.00%
+2025-07-26 09:17:21 INFO: total time: 0.2700369358062744s
+2025-07-26 09:17:49 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:17:49 INFO: Solving with cbc
+2025-07-26 09:17:49 INFO: Problem solved in 0.07087373733520508s.
+2025-07-26 09:17:49 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:17:49 INFO: 
+2025-07-26 09:17:49 INFO: Solution information
+2025-07-26 09:17:49 INFO: ----------
+2025-07-26 09:17:49 INFO: 
+2025-07-26 09:17:49 INFO: objective cost=8827.52
+2025-07-26 09:17:49 INFO: total cost of generation=8827.52
+2025-07-26 09:17:49 INFO: linearized fuel cost of generation=8827.52
+2025-07-26 09:17:49 INFO: polynomial fuel cost of generation=8827.52
+2025-07-26 09:17:49 INFO: percentage difference		=0.00%
+2025-07-26 09:17:49 INFO: total time: 0.24469399452209473s
+2025-07-26 09:20:24 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:20:24 INFO: Solving with cbc
+2025-07-26 09:20:24 INFO: Problem solved in 0.06906700134277344s.
+2025-07-26 09:20:24 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:20:24 INFO: 
+2025-07-26 09:20:24 INFO: Solution information
+2025-07-26 09:20:24 INFO: ----------
+2025-07-26 09:20:24 INFO: 
+2025-07-26 09:20:24 INFO: objective cost=88275.2
+2025-07-26 09:20:24 INFO: total cost of generation=88275.20000000001
+2025-07-26 09:20:24 INFO: linearized fuel cost of generation=88275.20000000001
+2025-07-26 09:20:24 INFO: polynomial fuel cost of generation=88275.2
+2025-07-26 09:20:24 INFO: percentage difference		=0.00%
+2025-07-26 09:20:24 INFO: total time: 0.2411348819732666s
+2025-07-26 09:20:42 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:20:42 INFO: Solving with cbc
+2025-07-26 09:20:42 INFO: Problem solved in 0.09563422203063965s.
+2025-07-26 09:20:42 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:20:42 INFO: 
+2025-07-26 09:20:42 INFO: Solution information
+2025-07-26 09:20:42 INFO: ----------
+2025-07-26 09:20:42 INFO: 
+2025-07-26 09:20:42 INFO: objective cost=88275.2
+2025-07-26 09:20:42 INFO: total cost of generation=88275.20000000001
+2025-07-26 09:20:42 INFO: linearized fuel cost of generation=88275.20000000001
+2025-07-26 09:20:42 INFO: polynomial fuel cost of generation=88275.2
+2025-07-26 09:20:42 INFO: percentage difference		=0.00%
+2025-07-26 09:20:42 INFO: total time: 0.2714560031890869s
+2025-07-26 09:21:22 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 09:21:22 INFO: Solving with cbc
+2025-07-26 09:21:22 INFO: Problem solved in 0.07265615463256836s.
+2025-07-26 09:21:22 INFO: resolving fixed-integer LP for duals
+2025-07-26 09:21:22 INFO: 
+2025-07-26 09:21:22 INFO: Solution information
+2025-07-26 09:21:22 INFO: ----------
+2025-07-26 09:21:22 INFO: 
+2025-07-26 09:21:22 INFO: objective cost=88275.2
+2025-07-26 09:21:22 INFO: total cost of generation=88275.20000000001
+2025-07-26 09:21:22 INFO: linearized fuel cost of generation=88275.20000000001
+2025-07-26 09:21:22 INFO: polynomial fuel cost of generation=88275.2
+2025-07-26 09:21:22 INFO: percentage difference		=0.00%
+2025-07-26 09:21:22 INFO: total time: 0.24563097953796387s
+2025-07-26 14:26:18 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 14:26:18 INFO: Stage starting at 2025-01-15
+2025-07-26 14:26:18 INFO: Solving with cbc
+2025-07-26 14:26:18 INFO: Problem solved in 0.13799500465393066s.
+2025-07-26 14:26:18 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:26:18 INFO: Stage starting at 2025-01-16
+2025-07-26 14:26:18 INFO: Solving with cbc
+2025-07-26 14:26:18 INFO: Problem solved in 0.12412285804748535s.
+2025-07-26 14:26:18 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:26:19 INFO: Stage starting at 2025-01-17
+2025-07-26 14:26:19 INFO: Solving with cbc
+2025-07-26 14:26:19 INFO: Problem solved in 0.12224984169006348s.
+2025-07-26 14:26:19 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:26:19 WARNING: no visualization for multistage SCUC yet
+2025-07-26 14:26:19 INFO: solved multistage problem in a total solver time of 0.6248 sec
+2025-07-26 14:26:19 INFO: total generation cost = 835596.9859999999
+2025-07-26 14:26:19 INFO: total time: 1.1161346435546875s
+2025-07-26 14:27:53 WARNING: No generation initial conditions file found.
+            Setting to defaults.
+2025-07-26 14:27:53 INFO: Stage starting at 2025-01-15
+2025-07-26 14:27:54 INFO: Solving with cbc
+2025-07-26 14:27:54 INFO: Problem solved in 0.12764954566955566s.
+2025-07-26 14:27:54 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:27:54 INFO: Stage starting at 2025-01-16
+2025-07-26 14:27:54 INFO: Solving with cbc
+2025-07-26 14:27:54 INFO: Problem solved in 0.1156156063079834s.
+2025-07-26 14:27:54 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:27:54 INFO: Stage starting at 2025-01-17
+2025-07-26 14:27:54 INFO: Solving with cbc
+2025-07-26 14:27:54 INFO: Problem solved in 0.11702537536621094s.
+2025-07-26 14:27:54 INFO: resolving fixed-integer LP for duals
+2025-07-26 14:27:54 WARNING: no visualization for multistage SCUC yet
+2025-07-26 14:27:54 INFO: solved multistage problem in a total solver time of 0.5984 sec
+2025-07-26 14:27:54 INFO: total generation cost = 835596.9859999999
+2025-07-26 14:27:54 INFO: total time: 1.0879042148590088s
+2025-07-26 14:52:26 INFO: Stage starting at 2025-01-15
+2025-07-26 14:52:26 INFO: Solving with cbc
+2025-07-26 14:52:26 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:52:26 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:52:27 INFO: Solving with cbc
+2025-07-26 14:52:27 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:52:50 INFO: Stage starting at 2025-01-15
+2025-07-26 14:52:50 INFO: Solving with cbc
+2025-07-26 14:52:51 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:52:51 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:52:51 INFO: Solving with cbc
+2025-07-26 14:52:51 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:52:58 INFO: Stage starting at 2025-01-15
+2025-07-26 14:52:58 INFO: Solving with cbc
+2025-07-26 14:52:58 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:52:58 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:52:58 INFO: Solving with cbc
+2025-07-26 14:52:58 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:53:40 INFO: Stage starting at 2025-01-15
+2025-07-26 14:53:40 INFO: Solving with cbc
+2025-07-26 14:53:40 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:53:40 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:53:40 INFO: Solving with cbc
+2025-07-26 14:53:40 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:54:33 INFO: Solving with cbc
+2025-07-26 14:54:33 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-26 14:54:33 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-26 14:54:33 INFO: Solving with cbc
+2025-07-26 14:54:33 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:07:57 WARNING: g0 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:07:57 WARNING: g1 should have a min. power bid (12.0) <= to its min. power limit (12.0)
+2025-07-27 02:07:57 WARNING: g2 should have a min. power bid (18.0) <= to its min. power limit (18.0)
+2025-07-27 02:07:57 WARNING: g3 should have a min. power bid (24.0) <= to its min. power limit (24.0)
+2025-07-27 02:07:57 WARNING: g4 should have a min. power bid (36.0) <= to its min. power limit (36.0)
+2025-07-27 02:07:57 WARNING: g5 should have a min. power bid (9.0) <= to its min. power limit (9.0)
+2025-07-27 02:07:57 WARNING: g6 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:07:57 WARNING: g7 should have a max. power bid (3.0) >= to its max. power limit (3.0)
+2025-07-27 02:07:57 WARNING: g8 should have a max. power bid (3.0) >= to its max. power limit (3.0)
+2025-07-27 02:08:47 INFO: Solving with cbc
+2025-07-27 02:08:47 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:08:47 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:08:47 INFO: Solving with cbc
+2025-07-27 02:08:47 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:18 INFO: Solving with cbc
+2025-07-27 02:09:18 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:18 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:09:18 INFO: Solving with cbc
+2025-07-27 02:09:19 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:51 INFO: Solving with cbc
+2025-07-27 02:09:51 INFO: Problem solved in 0.12167215347290039s.
+2025-07-27 02:09:51 INFO: resolving fixed-integer LP for duals
+2025-07-27 02:09:51 INFO: 
+2025-07-27 02:09:51 INFO: Solution information
+2025-07-27 02:09:51 INFO: ----------
+2025-07-27 02:09:51 INFO: 
+2025-07-27 02:09:51 INFO: objective cost=585298.8
+2025-07-27 02:09:51 INFO: total cost of generation=585298.8
+2025-07-27 02:09:51 INFO: linearized fuel cost of generation=585298.8
+2025-07-27 02:09:51 INFO: polynomial fuel cost of generation=585298.8
+2025-07-27 02:09:51 INFO: percentage difference		=0.00%
+2025-07-27 02:09:51 INFO: total time: 0.39343690872192383s
+2025-07-27 02:10:26 INFO: Solving with cbc
+2025-07-27 02:10:26 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:26 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:10:26 INFO: Solving with cbc
+2025-07-27 02:10:26 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:32 INFO: Solving with cbc
+2025-07-27 02:10:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:32 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:10:32 INFO: Solving with cbc
+2025-07-27 02:10:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:08 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:08 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:08 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:08 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:08 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:08 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:08 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:08 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:08 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:09 INFO: Solving with cbc
+2025-07-27 02:11:09 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:09 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:09 INFO: Solving with cbc
+2025-07-27 02:11:09 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:32 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:32 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:32 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:32 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:32 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:32 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:32 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:32 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:32 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:32 INFO: Solving with cbc
+2025-07-27 02:11:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:32 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:32 INFO: Solving with cbc
+2025-07-27 02:11:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:55 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:55 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:55 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:55 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:55 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:56 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:56 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:56 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:56 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:56 INFO: Solving with cbc
+2025-07-27 02:11:56 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:56 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:56 INFO: Solving with cbc
+2025-07-27 02:11:56 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:20 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:12:20 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:12:20 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:12:20 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:12:20 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:12:20 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:12:20 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:12:20 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:12:20 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:12:20 INFO: Solving with cbc
+2025-07-27 02:12:20 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:20 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:12:20 INFO: Solving with cbc
+2025-07-27 02:12:20 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:26 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:12:26 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:12:26 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:12:26 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:12:26 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:12:26 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:12:26 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:12:27 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:12:27 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:12:27 INFO: Solving with cbc
+2025-07-27 02:12:27 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:27 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:12:27 INFO: Solving with cbc
+2025-07-27 02:12:27 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:04 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:13:04 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:13:04 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:13:04 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:13:04 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:13:04 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:13:04 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:13:04 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:13:04 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:13:04 INFO: Solving with cbc
+2025-07-27 02:13:04 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:04 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:13:05 INFO: Solving with cbc
+2025-07-27 02:13:05 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:10 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:13:10 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:13:10 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:13:10 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:13:10 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:13:10 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:13:10 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:13:10 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:13:10 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:13:10 INFO: Solving with cbc
+2025-07-27 02:13:11 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:11 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:13:11 INFO: Solving with cbc
+2025-07-27 02:13:11 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:14:00 WARNING: g0 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:14:00 WARNING: g1 should have a min. power bid (12.0) <= to its min. power limit (12.0)
+2025-07-27 02:14:00 WARNING: g2 should have a min. power bid (18.0) <= to its min. power limit (18.0)
+2025-07-27 02:14:00 WARNING: g3 should have a min. power bid (24.0) <= to its min. power limit (24.0)
+2025-07-27 02:14:00 WARNING: g4 should have a min. power bid (36.0) <= to its min. power limit (36.0)
+2025-07-27 02:14:00 WARNING: g5 should have a min. power bid (9.0) <= to its min. power limit (9.0)
+2025-07-27 02:14:00 WARNING: g6 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:14:00 INFO: Solving with cbc
+2025-07-27 02:14:00 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:14:00 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:14:01 INFO: Solving with cbc
+2025-07-27 02:14:01 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:44:16 INFO: Solving with cbc
+2025-07-27 02:44:16 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:44:16 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:44:16 INFO: Solving with cbc
+2025-07-27 02:44:16 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:45:54 INFO: Solving with cbc
+2025-07-27 02:45:54 INFO: Problem solved in 0.14037489891052246s.
+2025-07-27 02:45:54 INFO: resolving fixed-integer LP for duals
+2025-07-27 02:45:54 INFO: 
+2025-07-27 02:45:54 INFO: Solution information
+2025-07-27 02:45:54 INFO: ----------
+2025-07-27 02:45:54 INFO: 
+2025-07-27 02:45:54 INFO: objective cost=807959.52
+2025-07-27 02:45:54 INFO: total cost of generation=807959.5164399999
+2025-07-27 02:45:54 INFO: linearized fuel cost of generation=807259.5164399999
+2025-07-27 02:45:54 INFO: polynomial fuel cost of generation=807259.514395
+2025-07-27 02:45:54 INFO: percentage difference		=0.00%
+2025-07-27 02:45:54 INFO: total time: 0.4355471134185791s
+2025-07-27 02:46:34 INFO: Solving with cbc
+2025-07-27 02:46:34 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:46:34 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:46:34 INFO: Solving with cbc
+2025-07-27 02:46:34 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:46:41 INFO: Solving with cbc
+2025-07-27 02:46:41 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:46:41 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:46:41 INFO: Solving with cbc
+2025-07-27 02:46:41 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 03:07:45 INFO: Solving with cbc
+2025-07-27 03:07:45 INFO: Problem solved in 0.1506974697113037s.
+2025-07-27 03:07:45 INFO: resolving fixed-integer LP for duals
+2025-07-27 03:07:45 INFO: 
+2025-07-27 03:07:45 INFO: Solution information
+2025-07-27 03:07:45 INFO: ----------
+2025-07-27 03:07:45 INFO: 
+2025-07-27 03:07:45 INFO: objective cost=562282.95
+2025-07-27 03:07:45 INFO: total cost of generation=562282.951
+2025-07-27 03:07:45 INFO: linearized fuel cost of generation=562282.951
+2025-07-27 03:07:45 INFO: polynomial fuel cost of generation=562282.9525
+2025-07-27 03:07:45 INFO: percentage difference		=0.00%
+2025-07-27 03:07:45 INFO: total time: 0.48935651779174805s
+2025-07-27 03:07:54 INFO: Solving with cbc
+2025-07-27 03:07:54 INFO: Problem solved in 0.14918875694274902s.
+2025-07-27 03:07:54 INFO: resolving fixed-integer LP for duals
+2025-07-27 03:07:54 INFO: 
+2025-07-27 03:07:54 INFO: Solution information
+2025-07-27 03:07:54 INFO: ----------
+2025-07-27 03:07:54 INFO: 
+2025-07-27 03:07:54 INFO: objective cost=562282.95
+2025-07-27 03:07:54 INFO: total cost of generation=562282.951
+2025-07-27 03:07:54 INFO: linearized fuel cost of generation=562282.951
+2025-07-27 03:07:54 INFO: polynomial fuel cost of generation=562282.9525
+2025-07-27 03:07:54 INFO: percentage difference		=0.00%
+2025-07-27 03:07:54 INFO: total time: 0.4620511531829834s

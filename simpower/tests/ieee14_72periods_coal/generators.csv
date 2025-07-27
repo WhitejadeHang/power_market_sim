@@ -1,0 +1,10 @@
+name,bus,P min,P max,minuptime,mindowntime,rampratemax,rampratemin,startupcost,shutdowncost,noloadcost,costcurvepointsfilename
+G1,Bus01,20.0,200,4,4,60,-60,5000,2000,1000,G1_block_bid.csv
+G2,Bus02,15.0,150,4,4,45,-45,4000,1500,800,G2_block_bid.csv
+G3,Bus03,12.0,120,4,4,40,-40,3000,1200,600,G3_block_bid.csv
+G4,Bus06,8.0,80,4,4,40,-40,2000,800,400,G4_block_bid.csv
+G5,Bus06,6.0,60,4,4,30,-30,1500,600,300,G5_block_bid.csv
+G6,Bus08,5.0,50,3,3,25,-25,1200,500,250,G6_block_bid.csv
+G7,Bus08,4.0,40,2,2,30,-30,800,300,200,G7_block_bid.csv
+G8,Bus13,3.0,30,2,2,25,-25,600,200,150,G8_block_bid.csv
+G9,Bus14,2.5,25,1,1,20,-20,500,150,100,G9_block_bid.csv

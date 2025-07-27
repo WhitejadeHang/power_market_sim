@@ -1,0 +1,8 @@
+name,bus,P min,P max,rampratemax,startupcost,shutdowncost,minuptime,mindowntime,noloadcost,rampratemin
+G1_Steam,Bus01,10,100,30,1000,500,4,4,200,-30
+G2_Hydro,Bus02,5,40,20,200,100,2,1,50,-20
+G3_Gas,Bus03,10,60,40,800,400,2,2,150,-40
+G4_Coal,Bus06,20,80,25,1500,800,6,6,250,-25
+G5_Nuclear,Bus06,50,120,10,3000,1500,12,12,100,-10
+G6_Peaker,Bus08,0,30,30,500,200,1,1,80,-30
+G7_Wind,Bus08,0,25,25,0,0,0,0,0,-25
