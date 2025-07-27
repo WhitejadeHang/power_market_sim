@@ -283,3 +283,155 @@
 2025-07-26 14:54:33 CRITICAL: stage infeasible, re-run with shedding.
 2025-07-26 14:54:33 INFO: Solving with cbc
 2025-07-26 14:54:33 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:07:57 WARNING: g0 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:07:57 WARNING: g1 should have a min. power bid (12.0) <= to its min. power limit (12.0)
+2025-07-27 02:07:57 WARNING: g2 should have a min. power bid (18.0) <= to its min. power limit (18.0)
+2025-07-27 02:07:57 WARNING: g3 should have a min. power bid (24.0) <= to its min. power limit (24.0)
+2025-07-27 02:07:57 WARNING: g4 should have a min. power bid (36.0) <= to its min. power limit (36.0)
+2025-07-27 02:07:57 WARNING: g5 should have a min. power bid (9.0) <= to its min. power limit (9.0)
+2025-07-27 02:07:57 WARNING: g6 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:07:57 WARNING: g7 should have a max. power bid (3.0) >= to its max. power limit (3.0)
+2025-07-27 02:07:57 WARNING: g8 should have a max. power bid (3.0) >= to its max. power limit (3.0)
+2025-07-27 02:08:47 INFO: Solving with cbc
+2025-07-27 02:08:47 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:08:47 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:08:47 INFO: Solving with cbc
+2025-07-27 02:08:47 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:18 INFO: Solving with cbc
+2025-07-27 02:09:18 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:18 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:09:18 INFO: Solving with cbc
+2025-07-27 02:09:19 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:09:51 INFO: Solving with cbc
+2025-07-27 02:09:51 INFO: Problem solved in 0.12167215347290039s.
+2025-07-27 02:09:51 INFO: resolving fixed-integer LP for duals
+2025-07-27 02:09:51 INFO: 
+2025-07-27 02:09:51 INFO: Solution information
+2025-07-27 02:09:51 INFO: ----------
+2025-07-27 02:09:51 INFO: 
+2025-07-27 02:09:51 INFO: objective cost=585298.8
+2025-07-27 02:09:51 INFO: total cost of generation=585298.8
+2025-07-27 02:09:51 INFO: linearized fuel cost of generation=585298.8
+2025-07-27 02:09:51 INFO: polynomial fuel cost of generation=585298.8
+2025-07-27 02:09:51 INFO: percentage difference		=0.00%
+2025-07-27 02:09:51 INFO: total time: 0.39343690872192383s
+2025-07-27 02:10:26 INFO: Solving with cbc
+2025-07-27 02:10:26 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:26 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:10:26 INFO: Solving with cbc
+2025-07-27 02:10:26 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:32 INFO: Solving with cbc
+2025-07-27 02:10:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:10:32 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:10:32 INFO: Solving with cbc
+2025-07-27 02:10:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:08 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:08 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:08 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:08 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:08 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:08 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:08 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:08 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:08 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:09 INFO: Solving with cbc
+2025-07-27 02:11:09 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:09 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:09 INFO: Solving with cbc
+2025-07-27 02:11:09 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:32 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:32 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:32 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:32 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:32 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:32 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:32 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:32 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:32 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:32 INFO: Solving with cbc
+2025-07-27 02:11:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:32 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:32 INFO: Solving with cbc
+2025-07-27 02:11:32 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:55 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:11:55 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:11:55 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:11:55 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:11:55 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:11:56 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:11:56 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:11:56 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:11:56 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:11:56 INFO: Solving with cbc
+2025-07-27 02:11:56 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:11:56 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:11:56 INFO: Solving with cbc
+2025-07-27 02:11:56 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:20 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:12:20 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:12:20 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:12:20 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:12:20 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:12:20 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:12:20 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:12:20 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:12:20 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:12:20 INFO: Solving with cbc
+2025-07-27 02:12:20 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:20 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:12:20 INFO: Solving with cbc
+2025-07-27 02:12:20 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:26 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:12:26 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:12:26 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:12:26 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:12:26 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:12:26 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:12:26 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:12:27 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:12:27 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:12:27 INFO: Solving with cbc
+2025-07-27 02:12:27 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:12:27 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:12:27 INFO: Solving with cbc
+2025-07-27 02:12:27 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:04 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:13:04 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:13:04 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:13:04 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:13:04 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:13:04 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:13:04 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:13:04 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:13:04 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:13:04 INFO: Solving with cbc
+2025-07-27 02:13:04 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:04 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:13:05 INFO: Solving with cbc
+2025-07-27 02:13:05 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:10 WARNING: g0 should have a min. power bid (25.0) <= to its min. power limit (25.0)
+2025-07-27 02:13:10 WARNING: g1 should have a min. power bid (10.0) <= to its min. power limit (10.0)
+2025-07-27 02:13:10 WARNING: g2 should have a min. power bid (15.0) <= to its min. power limit (15.0)
+2025-07-27 02:13:10 WARNING: g3 should have a min. power bid (20.0) <= to its min. power limit (20.0)
+2025-07-27 02:13:10 WARNING: g4 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:13:10 WARNING: g5 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:13:10 WARNING: g6 should have a min. power bid (6.25) <= to its min. power limit (6.25)
+2025-07-27 02:13:10 WARNING: g7 should have a min. power bid (17.5) <= to its min. power limit (17.5)
+2025-07-27 02:13:10 WARNING: g8 should have a min. power bid (22.5) <= to its min. power limit (22.5)
+2025-07-27 02:13:10 INFO: Solving with cbc
+2025-07-27 02:13:11 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:13:11 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:13:11 INFO: Solving with cbc
+2025-07-27 02:13:11 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:14:00 WARNING: g0 should have a min. power bid (30.0) <= to its min. power limit (30.0)
+2025-07-27 02:14:00 WARNING: g1 should have a min. power bid (12.0) <= to its min. power limit (12.0)
+2025-07-27 02:14:00 WARNING: g2 should have a min. power bid (18.0) <= to its min. power limit (18.0)
+2025-07-27 02:14:00 WARNING: g3 should have a min. power bid (24.0) <= to its min. power limit (24.0)
+2025-07-27 02:14:00 WARNING: g4 should have a min. power bid (36.0) <= to its min. power limit (36.0)
+2025-07-27 02:14:00 WARNING: g5 should have a min. power bid (9.0) <= to its min. power limit (9.0)
+2025-07-27 02:14:00 WARNING: g6 should have a min. power bid (7.5) <= to its min. power limit (7.5)
+2025-07-27 02:14:00 INFO: Solving with cbc
+2025-07-27 02:14:00 CRITICAL: problem not solved - solver terminated with status: "infeasible"
+2025-07-27 02:14:00 CRITICAL: stage infeasible, re-run with shedding.
+2025-07-27 02:14:01 INFO: Solving with cbc
+2025-07-27 02:14:01 CRITICAL: problem not solved - solver terminated with status: "infeasible"
