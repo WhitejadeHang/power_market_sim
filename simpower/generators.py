@@ -210,9 +210,21 @@ class Generator(OptimizationObject):
         if pd.isnull(power):
             raise ValueError("inital power cannot be null")
         self.initial_status = bool_to_int(status)
-        self.initial_power = float(
-            power * self.initial_status
-        )  # note: this eliminates ambiguity of off status with power non-zero output
+        
+        # Ensure initial power respects min/max bounds when unit is on
+        if self.initial_status == 1:
+            # If unit is on, power must be between pmin and pmax
+            if power < self.pmin:
+                logging.warning(f"Generator {self.name}: Initial power {power} < pmin {self.pmin}, setting to pmin")
+                power = self.pmin
+            elif power > self.pmax:
+                logging.warning(f"Generator {self.name}: Initial power {power} > pmax {self.pmax}, setting to pmax")
+                power = self.pmax
+        else:
+            # If unit is off, power must be 0
+            power = 0
+            
+        self.initial_power = float(power)
         self.initial_status_hours = hoursinstatus
 
     def build_cost_model(self):
