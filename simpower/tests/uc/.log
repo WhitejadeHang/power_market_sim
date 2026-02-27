@@ -1,0 +1,141 @@
+2026-02-27 00:14:49 WARNING: DEPRECATED: Param 'power_g2' declared with an implicit domain of
+'Any'. The default domain for Param objects is 'Any'.  However, we
+will be changing that default to 'Reals' in the future.  If you really
+intend the domain of this Paramto be 'Any', you can suppress this
+warning by explicitly specifying 'within=Any' to the Param
+constructor.  (deprecated in 5.6.9, will be removed in (or after) 6.0)
+(called from /workspace/.venv/lib/python3.12/site-packages/pyomo/core/base/block.py:1086)
+2026-02-27 00:14:49 INFO: Solving with glpk
+2026-02-27 00:14:49 INFO: Problem solved in 0.006546735763549805s.
+2026-02-27 00:14:49 INFO: 
+2026-02-27 00:14:49 INFO: Solution information
+2026-02-27 00:14:49 INFO: ----------
+2026-02-27 00:14:49 INFO: 
+2026-02-27 00:14:49 INFO: Status
+2026-02-27 00:14:49 INFO:                      g0  g1  g2
+2026-02-27 00:14:49 INFO: time
+2026-02-27 00:14:49 INFO: 2011-01-01 01:00:00   1   1   1
+2026-02-27 00:14:49 INFO: 2011-01-01 02:00:00   0   1   1
+2026-02-27 00:14:49 INFO: Power
+2026-02-27 00:14:49 INFO:                        g0     g1    g2
+2026-02-27 00:14:49 INFO: time
+2026-02-27 00:14:49 INFO: 2011-01-01 01:00:00  40.0  500.0  10.0
+2026-02-27 00:14:49 INFO: 2011-01-01 02:00:00   0.0  480.0  50.0
+2026-02-27 00:14:49 INFO: IC
+2026-02-27 00:14:49 INFO:                        g0    g1   g2
+2026-02-27 00:14:49 INFO: time
+2026-02-27 00:14:49 INFO: 2011-01-01 01:00:00  20.0  20.0  0.0
+2026-02-27 00:14:49 INFO: 2011-01-01 02:00:00  None  20.0  0.0
+2026-02-27 00:14:49 INFO: 
+2026-02-27 00:14:49 INFO: t00
+2026-02-27 00:14:49 INFO: price=[None]
+2026-02-27 00:14:49 INFO: load info:
+2026-02-27 00:14:49 INFO: name=['big', 'small']
+2026-02-27 00:14:49 INFO: Pd=[500.0, 50.0]
+2026-02-27 00:14:49 INFO: 
+2026-02-27 00:14:49 INFO: t01
+2026-02-27 00:14:49 INFO: price=[None]
+2026-02-27 00:14:49 INFO: load info:
+2026-02-27 00:14:49 INFO: name=['big', 'small']
+2026-02-27 00:14:49 INFO: Pd=[500.0, 30.0]
+2026-02-27 00:14:49 INFO: 
+2026-02-27 00:14:49 INFO: objective cost=20400.0
+2026-02-27 00:14:49 INFO: total cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:14:49 INFO: linearized fuel cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:14:49 INFO: polynomial fuel cost of generation=20400.0 + (0*power_g2[t00] + 0.0*(power_g2[t00] - power_g2[t00]) + (0*power_g2[t01] + 0.0*(power_g2[t01] - power_g2[t01])))
+2026-02-27 00:14:49 INFO: percentage difference		=N/A
+2026-02-27 00:14:49 INFO: total time: 0.06396913528442383s
+2026-02-27 00:14:58 WARNING: DEPRECATED: Param 'power_g2' declared with an implicit domain of
+'Any'. The default domain for Param objects is 'Any'.  However, we
+will be changing that default to 'Reals' in the future.  If you really
+intend the domain of this Paramto be 'Any', you can suppress this
+warning by explicitly specifying 'within=Any' to the Param
+constructor.  (deprecated in 5.6.9, will be removed in (or after) 6.0)
+(called from /workspace/.venv/lib/python3.12/site-packages/pyomo/core/base/block.py:1086)
+2026-02-27 00:14:58 INFO: Solving with glpk
+2026-02-27 00:14:58 INFO: Problem solved in 0.006609439849853516s.
+2026-02-27 00:14:58 INFO: 
+2026-02-27 00:14:58 INFO: Solution information
+2026-02-27 00:14:58 INFO: ----------
+2026-02-27 00:14:58 INFO: 
+2026-02-27 00:14:58 INFO: Status
+2026-02-27 00:14:58 INFO:                      g0  g1  g2
+2026-02-27 00:14:58 INFO: time
+2026-02-27 00:14:58 INFO: 2011-01-01 01:00:00   1   1   1
+2026-02-27 00:14:58 INFO: 2011-01-01 02:00:00   0   1   1
+2026-02-27 00:14:58 INFO: Power
+2026-02-27 00:14:58 INFO:                        g0     g1    g2
+2026-02-27 00:14:58 INFO: time
+2026-02-27 00:14:58 INFO: 2011-01-01 01:00:00  40.0  500.0  10.0
+2026-02-27 00:14:58 INFO: 2011-01-01 02:00:00   0.0  480.0  50.0
+2026-02-27 00:14:58 INFO: IC
+2026-02-27 00:14:58 INFO:                        g0    g1   g2
+2026-02-27 00:14:58 INFO: time
+2026-02-27 00:14:58 INFO: 2011-01-01 01:00:00  20.0  20.0  0.0
+2026-02-27 00:14:58 INFO: 2011-01-01 02:00:00  None  20.0  0.0
+2026-02-27 00:14:58 INFO: 
+2026-02-27 00:14:58 INFO: t00
+2026-02-27 00:14:58 INFO: price=[None]
+2026-02-27 00:14:58 INFO: load info:
+2026-02-27 00:14:58 INFO: name=['big', 'small']
+2026-02-27 00:14:58 INFO: Pd=[500.0, 50.0]
+2026-02-27 00:14:58 INFO: 
+2026-02-27 00:14:58 INFO: t01
+2026-02-27 00:14:58 INFO: price=[None]
+2026-02-27 00:14:58 INFO: load info:
+2026-02-27 00:14:58 INFO: name=['big', 'small']
+2026-02-27 00:14:58 INFO: Pd=[500.0, 30.0]
+2026-02-27 00:14:58 INFO: 
+2026-02-27 00:14:58 INFO: objective cost=20400.0
+2026-02-27 00:14:58 INFO: total cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:14:58 INFO: linearized fuel cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:14:58 INFO: polynomial fuel cost of generation=20400.0 + (0*power_g2[t00] + 0.0*(power_g2[t00] - power_g2[t00]) + (0*power_g2[t01] + 0.0*(power_g2[t01] - power_g2[t01])))
+2026-02-27 00:14:58 INFO: percentage difference		=N/A
+2026-02-27 00:14:58 INFO: total time: 0.06322956085205078s
+2026-02-27 00:15:22 WARNING: DEPRECATED: Param 'power_g2' declared with an implicit domain of
+'Any'. The default domain for Param objects is 'Any'.  However, we
+will be changing that default to 'Reals' in the future.  If you really
+intend the domain of this Paramto be 'Any', you can suppress this
+warning by explicitly specifying 'within=Any' to the Param
+constructor.  (deprecated in 5.6.9, will be removed in (or after) 6.0)
+(called from /workspace/.venv/lib/python3.12/site-packages/pyomo/core/base/block.py:1086)
+2026-02-27 00:15:22 INFO: Solving with glpk
+2026-02-27 00:15:22 INFO: Problem solved in 0.0060882568359375s.
+2026-02-27 00:15:22 INFO: 
+2026-02-27 00:15:22 INFO: Solution information
+2026-02-27 00:15:22 INFO: ----------
+2026-02-27 00:15:22 INFO: 
+2026-02-27 00:15:22 INFO: Status
+2026-02-27 00:15:22 INFO:                      g0  g1  g2
+2026-02-27 00:15:22 INFO: time
+2026-02-27 00:15:22 INFO: 2011-01-01 01:00:00   1   1   1
+2026-02-27 00:15:22 INFO: 2011-01-01 02:00:00   0   1   1
+2026-02-27 00:15:22 INFO: Power
+2026-02-27 00:15:22 INFO:                        g0     g1    g2
+2026-02-27 00:15:22 INFO: time
+2026-02-27 00:15:22 INFO: 2011-01-01 01:00:00  40.0  500.0  10.0
+2026-02-27 00:15:22 INFO: 2011-01-01 02:00:00   0.0  480.0  50.0
+2026-02-27 00:15:22 INFO: IC
+2026-02-27 00:15:22 INFO:                        g0    g1   g2
+2026-02-27 00:15:22 INFO: time
+2026-02-27 00:15:22 INFO: 2011-01-01 01:00:00  20.0  20.0  0.0
+2026-02-27 00:15:22 INFO: 2011-01-01 02:00:00  None  20.0  0.0
+2026-02-27 00:15:22 INFO: 
+2026-02-27 00:15:22 INFO: t00
+2026-02-27 00:15:22 INFO: price=[None]
+2026-02-27 00:15:22 INFO: load info:
+2026-02-27 00:15:22 INFO: name=['big', 'small']
+2026-02-27 00:15:22 INFO: Pd=[500.0, 50.0]
+2026-02-27 00:15:22 INFO: 
+2026-02-27 00:15:22 INFO: t01
+2026-02-27 00:15:22 INFO: price=[None]
+2026-02-27 00:15:22 INFO: load info:
+2026-02-27 00:15:22 INFO: name=['big', 'small']
+2026-02-27 00:15:22 INFO: Pd=[500.0, 30.0]
+2026-02-27 00:15:22 INFO: 
+2026-02-27 00:15:22 INFO: objective cost=20400.0
+2026-02-27 00:15:22 INFO: total cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:15:22 INFO: linearized fuel cost of generation=20400.0 + (0*power_g2[t00] + 0*power_g2[t01])
+2026-02-27 00:15:22 INFO: polynomial fuel cost of generation=20400.0 + (0*power_g2[t00] + 0.0*(power_g2[t00] - power_g2[t00]) + (0*power_g2[t01] + 0.0*(power_g2[t01] - power_g2[t01])))
+2026-02-27 00:15:22 INFO: percentage difference		=N/A
+2026-02-27 00:15:22 INFO: total time: 0.06165766716003418s
