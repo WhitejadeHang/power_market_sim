@@ -41,23 +41,26 @@ ln -sf /workspace/simpower "$SITE_PKGS/minpower"
 ### 新市场仿真系统 (simpower.market)
 
 新系统在 `simpower/market/` 子包中，按照《重庆电力现货交易实施细则V2.0》实现。
+核心出清引擎使用 **PyPSA DC-OPF + HiGHS** 求解器，支持网络约束下的 LMP 计算。
 
 | Action | Command |
 |--------|---------|
-| 运行演示 | `python -m simpower.market.demo` |
-| 市场模块测试 | `python -m pytest simpower/market/tests/ -v` |
+| 运行 IEEE 6-bus 96时段演示 | `python -m simpower.market.demo` |
+| 市场模块测试 (26个) | `python -m pytest simpower/market/tests/ -v` |
 
 模块结构:
-- `models.py`: 数据模型（所有枚举/数据类/常量）
-- `bid_validator.py`: 报价校验
-- `clearing.py`: SCUC + SCED 出清引擎
-- `rt_clearing.py`: 实时滚动 SCED
+- `models.py`: 数据模型（机组/报价/市场结果/结算/常量）
+- `bid_validator.py`: 报价校验（煤机/新能源/储能，2-10点，0-1500限价）
+- `ieee_network.py`: IEEE 6-bus / 14-bus 标准测试网络
+- `pypsa_clearing.py`: PyPSA DC-OPF 出清引擎（含LMP提取）
+- `clearing.py`: Pyomo SCUC/SCED 引擎（备用）
+- `rt_clearing.py`: 实时5min滚动 SCED
 - `settlement.py`: 结算引擎
-- `agents.py`: Agent 框架
+- `agents.py`: Agent 框架（BiddingAgent / PriceTakerAgent）
 - `runner.py`: 市场编排器
-- `demo.py`: 演示场景
+- `demo.py`: IEEE 6-bus 96时段完整演示
 
-依赖求解器: GLPK（已安装），优化引擎为 Pyomo。
+依赖: PyPSA 1.1+, linopy, HiGHS (highspy), Pyomo, GLPK。
 
 ### Python 3.12 compatibility notes
 
