@@ -1,0 +1,4 @@
+pandas>=1.3
+pyomo>=6.0
+matplotlib>=3.4
+xarray>=0.18

@@ -433,23 +433,23 @@ def final_conditions():
     gen.set_initial_condition(status=1, hoursinstatus=10)
 
     times = TimeIndex(
-        pd.date_range("2010-01-01 00:00:00", "2010-01-01 5:00:00", freq="H")
+        pd.date_range("2010-01-01 00:00:00", "2010-01-01 5:00:00", freq="h")
     )
 
     # status varies
-    status = pd.Series([1, 0, 1, 0, 0, 0], index=times)
+    status = pd.Series([1, 0, 1, 0, 0, 0], index=times.strings.values)
     assert gen.gethrsinstatus(times, status) == 3
 
     # status varies, equal to initial status
-    status = pd.Series([0, 0, 0, 1, 1, 1], index=times)
+    status = pd.Series([0, 0, 0, 1, 1, 1], index=times.strings.values)
     assert gen.gethrsinstatus(times, status) == 3
 
     # status is all the same and equal to the initial status
-    status = pd.Series(1, index=times)
+    status = pd.Series(1, index=times.strings.values)
     assert gen.gethrsinstatus(times, status) == 16
 
     # status is all the same and not equal to the initial status
-    status = pd.Series(0, index=times)
+    status = pd.Series(0, index=times.strings.values)
     assert gen.gethrsinstatus(times, status) == 6
 
 

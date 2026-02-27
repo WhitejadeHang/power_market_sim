@@ -11,7 +11,7 @@ days = pd.date_range(forecast.index[0], forecast.index[-1], freq="D", tz=tz)[
 
 for day in days:
     periods = 36 if day < days[-1] else 24
-    trange = pd.date_range(day, periods=periods, freq="H", tz=tz)
+    trange = pd.date_range(day, periods=periods, freq="h", tz=tz)
     fcst = forecast.loc[trange]
 
     scenarios = pd.DataFrame(

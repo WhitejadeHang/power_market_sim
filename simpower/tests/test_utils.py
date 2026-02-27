@@ -79,11 +79,11 @@ def make_expensive_gen(**kwargs):
 def make_loads_times(Pd=200, Pdt=None, **kwargs):
     if Pdt is None:
         times = singletime
-        sched = Series(Pd, index=times)
+        sched = Series(Pd, index=times.strings.values)
         loads = [powersystems.Load(schedule=sched, **kwargs)]
     else:
         times = schedule.make_times_basic(N=len(Pdt))
-        sched = Series(Pdt, index=times)
+        sched = Series(Pdt, index=times.strings.values)
         loads = [powersystems.Load(schedule=sched, **kwargs)]
 
     return dict(loads=loads, times=times)

@@ -1,0 +1,5 @@
+[console_scripts]
+initial_dispatch = simpower.experiments.get_initial_dispatch:main
+scheduler_simpower = simpower.experiments.scheduler_simpower:main
+simpower = simpower.solve:main
+standalone_simpower = simpower.solve:standaloneUC
