@@ -46,7 +46,7 @@ ln -sf /workspace/simpower "$SITE_PKGS/minpower"
 | Action | Command |
 |--------|---------|
 | 运行 IEEE 6-bus 96时段演示 | `python -m simpower.market.demo` |
-| 市场模块测试 (26个) | `python -m pytest simpower/market/tests/ -v` |
+| 市场模块测试 (32个) | `python -m pytest simpower/market/tests/ -v` |
 
 模块结构:
 - `models.py`: 数据模型（机组/报价/市场结果/结算/常量）
@@ -67,4 +67,6 @@ ln -sf /workspace/simpower "$SITE_PKGS/minpower"
 - `SafeConfigParser` was replaced with `ConfigParser` in `config.py`.
 - pandas frequency alias `'H'` was changed to `'h'` (pandas 2.x deprecation).
 - `setuptools<70` is pinned because newer versions removed `pkg_resources` which `standalone.py` imports.
+- `pandas>=2.1,<3.0` is required — pandas 3.x turns the `pd.unique(list)` FutureWarning into a hard `TypeError`, breaking most core tests.
 - `nose-py3` is used instead of `nose` (the `imp` module was removed in Python 3.12).
+- 1 market test (`test_scip_solver`) fails without the optional SCIP solver installed — this is expected.
