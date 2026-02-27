@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cq-power-market"
+version = "1.0.0"
+description = "重庆电力现货市场仿真系统 — 基于 PyPSA + Linopy + HiGHS/SCIP"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pypsa>=1.0",
+    "linopy>=0.3",
+    "highspy>=1.5",
+    "pyomo>=6.0",
+    "matplotlib>=3.4",
+]
+
+[project.optional-dependencies]
+scip = ["pyscipopt>=4.0"]
+dev = [
+    "pytest>=7.0",
+    "flake8>=6.0",
+    "pyscipopt>=4.0",
+]
+
+[project.scripts]
+cq-market-demo = "cq_market.demo:run_demo"
+
+[tool.setuptools.packages.find]
+include = ["cq_market*"]
+
+[tool.pytest.ini_options]
+testpaths = ["cq_market/tests"]
+
+[tool.flake8]
+max-line-length = 120
+exclude = [".venv", "build", "dist"]
