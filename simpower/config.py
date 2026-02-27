@@ -4,7 +4,7 @@ Provide the defaults and configuration for other modules.
 """
 import os
 import sys
-from configparser import SafeConfigParser
+from configparser import ConfigParser as SafeConfigParser
 from .commonscripts import DotDict, joindir
 
 parser = SafeConfigParser()

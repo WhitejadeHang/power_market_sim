@@ -99,9 +99,9 @@ def three_buses():
         make_expensive_gen(bus="C"),
     ]
     loads = [
-        powersystems.Load(schedule=Series(Pd[0], singletime), bus="A"),
-        powersystems.Load(schedule=Series(Pd[1], singletime), bus="B"),
-        powersystems.Load(schedule=Series(Pd[2], singletime), bus="C"),
+        powersystems.Load(schedule=Series(Pd[0], index=singletime.strings.values), bus="A"),
+        powersystems.Load(schedule=Series(Pd[1], index=singletime.strings.values), bus="B"),
+        powersystems.Load(schedule=Series(Pd[2], index=singletime.strings.values), bus="C"),
     ]
     lines = [
         powersystems.Line(frombus="A", tobus="B"),

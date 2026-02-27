@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+*.egg
+
+# Test output files
+simpower/tests/ed/dispatch.csv
+simpower/tests/ed/dispatch.png
+simpower/tests/opf/powerflow-*.csv
+simpower/tests/uc/commitment-*.csv
+simpower/tests/uc-rolling/commitment-*
